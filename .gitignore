@@ -2,6 +2,6 @@
 .vscode/
 vscode/
 .idea/
-dart-sass
+dart-sass/
 ~*
 *~
