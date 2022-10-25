@@ -30,8 +30,6 @@ ORDER BY date_et_heure ASC';
 //Exécution de la requête
 $pdosResultat = $pdoConnexion->query($strRequete);
 
-//var_dump($pdoConnexion->errorInfo());
-
 $arrArtistes = array();
 //$ligne = $pdosResultat->fetch();
 //Extraction des informations sur les styles
@@ -157,7 +155,6 @@ for($intCptPart=0;$intCptPart<$nbParticipantsSug;$intCptPart++){
 $pdosResultat->closeCursor();
 
 $nbrImages = rand(3,5);
-var_dump($nbrImages);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -176,12 +173,19 @@ var_dump($nbrImages);
             5. Des images
 -->
 <main class="contenuArtiste">
-    <h1 class="nomArtiste">Nom de l'artiste</h1>
+    <h1 class="nomArtiste"><?php echo $arrInfos[0]['nom_artiste']?></h1>
+    <?php
+    for($cptEnr=0;$cptEnr<1;$cptEnr++){
+        ?> <p class="representationsArtiste">Représentations: À <?php echo $arrArtistes[$cptEnr]['nom_lieu'] . " " ?>à <?php echo $arrArtistes[$cptEnr]['heure'] . "h"?><?php echo $arrArtistes[$cptEnr]['minutes'] . " "?> le <?php echo $arrArtistes[$cptEnr]['jour'] . " " .  $arrMoisFr[$arrArtistes[$cptEnr]['mois']] . " " .  $arrArtistes[$cptEnr]['annee']; ?></p>
+        <?php
+    }
+    ?>
     <div class="provenanceStyleArtiste">
-        <p class="provenanceArtiste">Provenance de l'artiste</p>
-        <p class="styleArtiste">Style de l'artiste</p>
+        <p class="provenanceArtiste">Provenance: <?php echo $arrInfos[0]['provenance']?></p>
+        <p class="styleArtiste">Style(s): <?php echo $strStyles?></p>
     </div>
-    <p class="descriptionArtiste">Description de l'artiste</p>
+    <p class="descriptionArtiste">Description: <?php echo $arrInfos[0]['description']?></p>
+    <p>Site web: <a href="<?php echo $arrInfos[0]['site_web_artiste']?>"><?php echo $arrInfos[0]['site_web_artiste']?></a></p>
 
     <img class="imageHeroArtiste">
     <img class="imageArtiste">
@@ -193,15 +197,18 @@ var_dump($nbrImages);
 -->
 <section class="artistesSug">
     <h2 class="suggestions">Vous aimerez aussi...</h2>
-
-    <img class="imagesArtistesSug">
-    <p class="nomArtisteSug"></p>
-
-    <img class="imagesArtistesSug">
-    <p class="nomArtisteSug"></p>
-
-    <img class="imagesArtistesSug">
-    <p class="nomArtisteSug"></p>
+    <ul>
+        <?php
+        //        var_dump($arrParticipantsChoisi);
+        for($cpt=0;$cpt<count($arrParticipantsSug)-1;$cpt++){ ?>
+            <li>
+                <p class="nomArtisteSug"><a href='fiche/p-fiche-rosalie.php?id_artiste=<?php echo $arrParticipantsChoisi[$cpt]["id_artiste"];?>'>
+                        <?php echo $arrParticipantsChoisi[$cpt]["nom_artiste"];?></a></p>
+            </li>
+        <?php } ?>
+        <?php for ($cptPhoto=0; $cptPhoto<$nbrImages; $cptPhoto++){
+            echo '<img class="imagesArtistesSug" src="https://fakeimg.pl/300/">';
+        }?>
 </section>
 </body>
 </html>
