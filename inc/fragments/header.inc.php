@@ -5,10 +5,13 @@
             <a href="<?php echo $niveau ?>index.php" class="nav__link nav__link--active" arria-current="page" >Accueil</a>
         </li>
         <li class="nav__list-item">
-            <a href="<?php echo $niveau ?>artistes/index.php" class="nav__link">Participants</a>
+            <a href="<?php echo $niveau ?>artistes/index.php" class="nav__link">Liste des artistes</a>
         </li>
         <li class="nav__list-item">
             <a href="<?php echo $niveau ?>artistes/fiche/index.php" class="nav__link">Fiches</a>
+        </li>
+        <li class="nav__list-item">
+            <a href="<?php echo $niveau ?>programmation/index.php" class="nav__link">Programmation</a>
         </li>
     </ul>
 </nav>

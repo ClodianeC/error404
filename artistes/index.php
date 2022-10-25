@@ -62,6 +62,26 @@ include($niveau . 'inc/scripts/config.inc.php');
         <label for="pop">Pop</label>
     </form>
 </div>
+<ul class="liste-artistes">
+    <li class="artistes">
+        <picture class="artiste_img">
 
+        </picture>
+        <div class="artiste_info">
+            <h2 class="artiste_info_nom"></h2>
+            <p class="artiste_info_style"></p>
+        </div>
+    </li>
+</ul>
+<div class="controle-page">
+    <a class="precedent inactif" href="">Précédent</a>
+    <a class="page1 inactif" href="">1</a>
+    <a class="page2 actif" href="">2</a>
+    <a class="page3 actif" href="">3</a>
+    <a class="page4 actif" href="">4</a>
+    <a class="page5 actif" href="">5</a>
+    <a class="page6 actif" href="">6</a>
+    <a class="suivant actif" href="">Suivant</a>
+</div>
 </body>
 </html>
