@@ -163,6 +163,7 @@ $nbrImages = rand(3,5);
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Fiche d'artiste - Nom de l'artiste</title>
+    <link rel="stylesheet" href="<?php $niveau?>scss/style-rosalie.css">
 </head>
 <body>
 <!-- Main : Le contenu de la fiche de l'artiste
@@ -202,7 +203,7 @@ $nbrImages = rand(3,5);
         //        var_dump($arrParticipantsChoisi);
         for($cpt=0;$cpt<count($arrParticipantsSug)-1;$cpt++){ ?>
             <li>
-                <p class="nomArtisteSug"><a href='fiche/p-fiche-rosalie.php?id_artiste=<?php echo $arrParticipantsChoisi[$cpt]["id_artiste"];?>'>
+                <p class="nomArtisteSug"><a href='index.php?id_artiste=<?php echo $arrParticipantsChoisi[$cpt]["id_artiste"];?>'>
                         <?php echo $arrParticipantsChoisi[$cpt]["nom_artiste"];?></a></p>
             </li>
         <?php } ?>
