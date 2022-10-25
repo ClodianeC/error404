@@ -1,4 +1,9 @@
 <?php
+
+$niveau= '../../';
+
+include($niveau . 'inc/scripts/config.inc.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
