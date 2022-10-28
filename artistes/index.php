@@ -138,6 +138,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festival OFF - Liste des artistes</title>
+    <?php include($niveau . 'inc/fragments/head-links.html'); ?>
 </head>
 
 <body>
@@ -199,7 +200,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     ?>
     <li class="artistes">
         <picture class="artiste_img">
-    <img src="../images/image.jpg">
+            <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
         </picture>
         <div class="artiste_info">
             <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
@@ -233,15 +234,23 @@ if(isset($_GET["id_style"])){
 else{
     if($id_page<($nbPages-1)){
         $str_queryPageSuivante="./index.php?id_page=".($id_page+1);
+        $str_classPageSuivante="suivante actif";
+    }
+    else{
+        $str_classPageSuivante="suivante inactif";
     }
     if($id_page>0) {
         $str_queryPagePrecedente = "./index.php?id_page=".($id_page-1);
+        $str_classPagePrecedente="precedente actif";
+    }
+    else{
+        $str_classPagePrecedente="precedente inactif";
     }
     echo "Page ".($id_page+1)?> de <?php echo $nbPages;
 }
 ?>
 <div class="controle-page">
-    <a class="precedent inactif" href="<?php echo $str_queryPagePrecedente ?>">Précédent</a>
+    <a class="<?php echo $str_classPagePrecedente ?>" href="<?php echo $str_queryPagePrecedente ?>">Précédent</a>
 
     <?php
     for($intCptPagination=0; $intCptPagination<$nbPages; $intCptPagination++){
@@ -250,7 +259,7 @@ else{
     }
     ?>
 
-    <a class="suivant actif" href="<?php echo $str_queryPageSuivante ?>">Suivant</a>
+    <a class="<?php echo $str_classPageSuivante ?>" href="<?php echo $str_queryPageSuivante ?>">Suivant</a>
 </div>
 <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
 </body>
