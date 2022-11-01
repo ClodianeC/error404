@@ -4,9 +4,47 @@
  * @author Rosalie Roy - 2133488@csfoy.ca
  *
  * TABLE DES MATIERES
- *
+ ** Importation de polices
+ **
  */
+
+// Importation de polices
+// RUBIK DIRT (H1)
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+// ALATA (H2 - H3)
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
 body {
-  background-color: black;
+  font-family: Helvetica;
+  font-size: 16px;
+  background-color: #242526;
   color: white;
+
+  h1 {
+    font-size: 50px;
+    font-family: 'Rubik Dirt', sans-serif;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-family: 'Alata', sans-serif;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-family: 'Alata', sans-serif;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  section.artistesSug {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1.5em #AC3AB6;
+  }
 }

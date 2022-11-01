@@ -177,16 +177,16 @@ $nbrImages = rand(3,5);
     <h1 class="nomArtiste"><?php echo $arrInfos[0]['nom_artiste']?></h1>
     <?php
     for($cptEnr=0;$cptEnr<1;$cptEnr++){
-        ?> <p class="representationsArtiste">Représentations: À <?php echo $arrArtistes[$cptEnr]['nom_lieu'] . " " ?>à <?php echo $arrArtistes[$cptEnr]['heure'] . "h"?><?php echo $arrArtistes[$cptEnr]['minutes'] . " "?> le <?php echo $arrArtistes[$cptEnr]['jour'] . " " .  $arrMoisFr[$arrArtistes[$cptEnr]['mois']] . " " .  $arrArtistes[$cptEnr]['annee']; ?></p>
+        ?> <h3>Représentations </h3><p class="representationsArtiste">À <?php echo $arrArtistes[$cptEnr]['nom_lieu'] . " " ?>à <?php echo $arrArtistes[$cptEnr]['heure'] . "h"?><?php echo $arrArtistes[$cptEnr]['minutes'] . " "?> le <?php echo $arrArtistes[$cptEnr]['jour'] . " " .  $arrMoisFr[$arrArtistes[$cptEnr]['mois']] . " " .  $arrArtistes[$cptEnr]['annee']; ?></p>
         <?php
     }
     ?>
     <div class="provenanceStyleArtiste">
-        <p class="provenanceArtiste">Provenance: <?php echo $arrInfos[0]['provenance']?></p>
-        <p class="styleArtiste">Style(s): <?php echo $strStyles?></p>
+        <h3>Provenance </h3> <p class="provenanceArtiste"><?php echo $arrInfos[0]['provenance']?></p>
+        <h3>Style(s) </h3><p class="styleArtiste"><?php echo $strStyles?></p>
     </div>
-    <p class="descriptionArtiste">Description: <?php echo $arrInfos[0]['description']?></p>
-    <p>Site web: <a href="<?php echo $arrInfos[0]['site_web_artiste']?>"><?php echo $arrInfos[0]['site_web_artiste']?></a></p>
+    <h3>Description </h3><p class="descriptionArtiste"><?php echo $arrInfos[0]['description']?></p>
+    <h3>Site web </h3><p class="siteWebArtiste"><a href="<?php echo $arrInfos[0]['site_web_artiste']?>"><?php echo $arrInfos[0]['site_web_artiste']?></a></p>
 
     <img class="imageHeroArtiste">
     <img class="imageArtiste">
