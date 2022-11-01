@@ -174,42 +174,52 @@ $nbrImages = rand(3,5);
             5. Des images
 -->
 <main class="contenuArtiste">
-    <h1 class="nomArtiste"><?php echo $arrInfos[0]['nom_artiste']?></h1>
-    <?php
-    for($cptEnr=0;$cptEnr<1;$cptEnr++){
-        ?> <h3>Représentations </h3><p class="representationsArtiste">À <?php echo $arrArtistes[$cptEnr]['nom_lieu'] . " " ?>à <?php echo $arrArtistes[$cptEnr]['heure'] . "h"?><?php echo $arrArtistes[$cptEnr]['minutes'] . " "?> le <?php echo $arrArtistes[$cptEnr]['jour'] . " " .  $arrMoisFr[$arrArtistes[$cptEnr]['mois']] . " " .  $arrArtistes[$cptEnr]['annee']; ?></p>
+    <div class="partieGauche">
+        <h1 class="nomArtiste"><?php echo $arrInfos[0]['nom_artiste']?></h1>
         <?php
-    }
-    ?>
-    <div class="provenanceStyleArtiste">
-        <h3>Provenance </h3> <p class="provenanceArtiste"><?php echo $arrInfos[0]['provenance']?></p>
-        <h3>Style(s) </h3><p class="styleArtiste"><?php echo $strStyles?></p>
+        for($cptEnr=0;$cptEnr<1;$cptEnr++){
+            ?> <h3>Représentations </h3><p class="representationsArtiste">À <?php echo $arrArtistes[$cptEnr]['nom_lieu'] . " " ?>à <?php echo $arrArtistes[$cptEnr]['heure'] . "h"?><?php echo $arrArtistes[$cptEnr]['minutes'] . " "?> le <?php echo $arrArtistes[$cptEnr]['jour'] . " " .  $arrMoisFr[$arrArtistes[$cptEnr]['mois']] . " " .  $arrArtistes[$cptEnr]['annee']; ?></p>
+            <?php
+        }
+        ?>
+        <div class="provenanceStyleArtiste">
+            <h3>Provenance </h3> <p class="provenanceArtiste"><?php echo $arrInfos[0]['provenance']?></p>
+            <h3>Style(s) </h3><p class="styleArtiste"><?php echo $strStyles?></p>
+        </div>
+        <h3>Description </h3><p class="descriptionArtiste"><?php echo $arrInfos[0]['description']?></p>
+        <h3>Site web </h3><p class="siteWebArtiste"><a href="<?php echo $arrInfos[0]['site_web_artiste']?>"><?php echo $arrInfos[0]['site_web_artiste']?></a></p>
     </div>
-    <h3>Description </h3><p class="descriptionArtiste"><?php echo $arrInfos[0]['description']?></p>
-    <h3>Site web </h3><p class="siteWebArtiste"><a href="<?php echo $arrInfos[0]['site_web_artiste']?>"><?php echo $arrInfos[0]['site_web_artiste']?></a></p>
 
-    <img class="imageHeroArtiste">
-    <img class="imageArtiste">
-    <img class="imageArtiste">
+    <div class="partieDroite">
+        <?php echo '<img class="imageHeroArtiste" src="https://fakeimg.pl/300/">';?>
+        <div class="imagesArtiste">
+            <?php echo '<img class="imageArtiste" src="https://fakeimg.pl/150/">';?>
+            <?php echo '<img class="imageArtiste" src="https://fakeimg.pl/150/">';?>
+        </div>
+    </div>
+
+<!--    <img class="lumiereBleue" src="../../img/ligneBleue.svg">-->
 </main>
 <!-- Section : Des artistes proposés
             1. Des images
             2. Leurs noms
 -->
-<section class="artistesSug">
-    <h2 class="suggestions">Vous aimerez aussi...</h2>
-    <ul>
-        <?php
-        //        var_dump($arrParticipantsChoisi);
-        for($cpt=0;$cpt<count($arrParticipantsSug)-1;$cpt++){ ?>
-            <li>
-                <p class="nomArtisteSug"><a href='index.php?id_artiste=<?php echo $arrParticipantsChoisi[$cpt]["id_artiste"];?>'>
-                        <?php echo $arrParticipantsChoisi[$cpt]["nom_artiste"];?></a></p>
-            </li>
-        <?php } ?>
-        <?php for ($cptPhoto=0; $cptPhoto<$nbrImages; $cptPhoto++){
-            echo '<img class="imagesArtistesSug" src="https://fakeimg.pl/300/">';
-        }?>
-</section>
+<div class="artistesSugDiv">
+    <section class="artistesSug">
+        <h2 class="suggestions">Vous aimerez aussi...</h2>
+        <ul>
+            <?php
+            //        var_dump($arrParticipantsChoisi);
+            for($cpt=0;$cpt<count($arrParticipantsSug)-1;$cpt++){ ?>
+                <li>
+                    <p class="nomArtisteSug"><a href='index.php?id_artiste=<?php echo $arrParticipantsChoisi[$cpt]["id_artiste"];?>'>
+                            <?php echo $arrParticipantsChoisi[$cpt]["nom_artiste"];?></a></p>
+                </li>
+            <?php } ?>
+            <?php for ($cptPhoto=0; $cptPhoto<$nbrImages; $cptPhoto++){
+                echo '<img class="imagesArtistesSug" src="https://fakeimg.pl/300/">';
+            }?>
+    </section>
+</div>
 </body>
 </html>

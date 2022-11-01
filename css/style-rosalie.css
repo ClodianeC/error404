@@ -13,28 +13,49 @@ body {
   background-color: #242526;
   color: white;
 }
-body h1 {
-  font-size: 50px;
-  font-family: "Rubik Dirt", sans-serif;
-  font-weight: 400;
-}
-body h2 {
-  font-size: 40px;
-  font-family: "Alata", sans-serif;
-}
-body h3 {
-  font-size: 32px;
-  font-family: "Alata", sans-serif;
-}
 body a {
   color: white;
   text-decoration: none;
 }
-body section.artistesSug {
+body h2 {
+  font-size: 40px;
+  font-family: "Alata", sans-serif;
+  text-transform: uppercase;
+}
+body div.artistesSugDiv {
+  background-color: #242526;
+  filter: drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5));
+}
+body div.artistesSugDiv section.artistesSug {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 1.5em #AC3AB6;
+}
+body main {
+  display: flex;
+}
+body main div.partieGauche {
+  width: 50%;
+}
+body main div.partieGauche h1 {
+  font-size: 50px;
+  font-family: "Rubik Dirt", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+body main div.partieGauche h3 {
+  font-size: 32px;
+  font-family: "Alata", sans-serif;
+  text-transform: uppercase;
+}
+body main div.partieDroite {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main div.partieDroite div.imagesArtiste {
+  display: flex;
 }
 
 /*# sourceMappingURL=style-rosalie.css.map */
