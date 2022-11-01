@@ -31,11 +31,17 @@ body div.artistesSugDiv section.artistesSug {
   flex-direction: column;
   align-items: center;
 }
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
+  list-style-type: none;
+}
 body main {
   display: flex;
 }
 body main div.partieGauche {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 body main div.partieGauche h1 {
   font-size: 50px;
@@ -43,7 +49,10 @@ body main div.partieGauche h1 {
   font-weight: 400;
   text-transform: uppercase;
 }
-body main div.partieGauche h3 {
+body main div.partieGauche div.fondFonce {
+  background-color: #242526;
+}
+body main div.partieGauche div.fondFonce h3 {
   font-size: 32px;
   font-family: "Alata", sans-serif;
   text-transform: uppercase;
