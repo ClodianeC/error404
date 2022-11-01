@@ -163,7 +163,7 @@ $nbrImages = rand(3,5);
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Fiche d'artiste - Nom de l'artiste</title>
-    <link rel="stylesheet" href="<?php $niveau?>scss/style-rosalie.css">
+    <link rel="stylesheet" href="../../css/style-rosalie.css">
 </head>
 <body>
 <!-- Main : Le contenu de la fiche de l'artiste
