@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/**
+ * @author Rosalie Roy - 2133488@csfoy.ca
+ *
+ * TABLE DES MATIERES
+ ** Importation de polices
+ **
+ */
+
+// Importation de polices
+// RUBIK DIRT (H1)
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+// ALATA (H2 - H3)
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+body {
+  font-family: Helvetica;
+  font-size: 16px;
+  background-color: #242526;
+  color: white;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  h2 {
+    font-size: 40px;
+    font-family: 'Alata', sans-serif;
+    text-transform: uppercase;
+  }
+
+  div.artistesSugDiv {
+    background-color: #242526;
+    filter: drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5));
+
+    section.artistesSug {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      ul.listeSuggestions {
+        list-style-type: none;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+
+    //background-image: url("../../img/ligneBleue.svg");
+    div.partieGauche {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1 {
+        font-size: 50px;
+        font-family: 'Rubik Dirt', sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      div.fondFonce {
+        background-color: #242526;
+        h3 {
+          font-size: 32px;
+          font-family: 'Alata', sans-serif;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    div.partieDroite {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      div.imagesArtiste{
+        display: flex;
+      }
+    }
+  }
+}
+
