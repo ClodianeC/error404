@@ -139,7 +139,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festival OFF - Liste des artistes</title>
     <?php include($niveau . 'inc/fragments/head-links.html'); ?>
-    <link rel="stylesheet" href="<?php echo $niveau ?>/css/style-clodiane.css">
+    <link rel="stylesheet" href="<?php echo $niveau ?>css/style-clodiane.css">
 </head>
 
 <body>
@@ -167,34 +167,13 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <div class="section-filtre">
         <h2 class="h2_tri">Filtrer par styles</h2>
         <form class="filtre_formulaire">
-            <input class="checkbox-style" type="checkbox" id="burlesque" name="style-filtre" value="burlesque">
-            <label class="label_checkbox-style" for="burlesque">Burlesque</label>
-            <input class="checkbox-style" type="checkbox" id="electro" name="style-filtre" value="electro">
-            <label class="label_checkbox-style" for="electro">Électro</label>
-            <input class="checkbox-style" type="checkbox" id="trash" name="style-filtre" value="trash">
-            <label class="label_checkbox-style" for="trash">Trash</label>
-            <input class="checkbox-style" type="checkbox" id="punk" name="style-filtre" value="punk">
-            <label class="label_checkbox-style" for="punk">Punk</label>
-            <input class="checkbox-style" type="checkbox" id="exprerimental" name="style-filtre" value="exprerimental">
-            <label class="label_checkbox-style" for="exprerimental">Exprérimental</label>
-            <input class="checkbox-style" type="checkbox" id="humour" name="style-filtre" value="humour">
-            <label class="label_checkbox-style" for="humour">Humour</label>
-            <input class="checkbox-style" type="checkbox" id="raggae" name="style-filtre" value="raggae">
-            <label class="label_checkbox-style" for="raggae">Raggae</label>
-            <input class="checkbox-style" type="checkbox" id="hip-hop" name="style-filtre" value="hip-hop">
-            <label class="label_checkbox-style" for="hip-hop">Hip-Hop</label>
-            <input class="checkbox-style" type="checkbox" id="rap" name="style-filtre" value="rap">
-            <label class="label_checkbox-style" for="rap">Rap</label>
-            <input class="checkbox-style" type="checkbox" id="folk" name="style-filtre" value="folk">
-            <label class="label_checkbox-style" for="folk">Folk</label>
-            <input class="checkbox-style" type="checkbox" id="country" name="style-filtre" value="country">
-            <label class="label_checkbox-style" for="country">Country</label>
-            <input class="checkbox-style" type="checkbox" id="franco" name="style-filtre" value="franco">
-            <label class="label_checkbox-style" for="franco">Franco</label>
-            <input class="checkbox-style" type="checkbox" id="indie" name="style-filtre" value="indie">
-            <label class="label_checkbox-style" for="indie">Indie</label>
-            <input class="checkbox-style" type="checkbox" id="pop" name="style-filtre" value="pop">
-            <label class="label_checkbox-style" for="pop">Pop</label>
+            <?php
+            for($intCptFiltre = 0; $intCptFiltre < count($arr_style); $intCptFiltre++){
+                $str_style = $arr_style[$intCptFiltre]["nom_style"];
+                echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='style-filtre' value='".$str_style."'>";
+                echo "<label class='label_checkbox-style'for='".$str_style."'>$str_style</label></li>";
+            }
+            ?>
         </form>
     </div>
 
@@ -208,15 +187,19 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         if($intCpt%2==0){
             $str_classArtistePair = "impair";
         }
+        $str_queryArtiste = "./fiche/index.php?id_artiste=".$arr_artiste[$intCpt]['id_artiste'];
     ?>
     <li class="artistes <?php echo $str_classArtistePair?>">
-        <picture class="artiste_img">
-            <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
-        </picture>
-        <div class="artiste_info">
-            <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
-            <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
-        </div>
+        <a class="artistes_lien" href="<?php echo $str_queryArtiste ?>">
+            <picture class="artiste_img">
+                <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
+            </picture>
+        </a>
+            <div class="artiste_info">
+                <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
+                <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
+            </div>
+
     </li>
     <?php
     }
@@ -238,7 +221,7 @@ if(isset($_GET["id_style"])){
     if($id_page>0){
         $str_queryPagePrecedente="./index.php?id_style=".$_GET["id_style"]."&id_page=".($id_page-1);
     }
-    echo "Page ".($id_page+1)?> de <?php echo $nbPagesFiltre;
+    echo "<p class='indicateur-page'>Page ".($id_page+1)?> de <?php echo $nbPagesFiltre."</p>";
 }
 
 //Si il n'y en a pas

@@ -7,6 +7,7 @@
 ** Temporaire
 ** Général
 ** Tri et filtres
+*** Boutons
 ** Contrôles de page
 ** Liens artistes
 */
@@ -107,11 +108,11 @@ abbr[title]:hover {
  */
 @font-face {
   font-family: RubikDirt;
-  src: url(../../font/RubikDirt-Regular.ttf) format("truetype");
+  src: url("../../font/RubikDirt-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: Alata;
-  src: url(../../font/alata-regular.ttf) format("truetype");
+  src: url("../../font/alata-regular.ttf") format("truetype");
 }
 h1,
 .h1 {
@@ -222,9 +223,18 @@ h4,
     ========================================================================== */
 body {
   background-color: #242526;
+  background-image: url("../images/fond/neons-mobile.png");
+  background-size: 100%;
 }
 
+@media (min-width: 800px) {
+  body {
+    background-image: url("../images/fond/neons-table.png");
+    background-size: 100%;
+  }
+}
 h1,
+.desole,
 .artiste_info_nom,
 .artiste_info_style,
 .indicateur-page {
@@ -251,20 +261,50 @@ h1,
 
 .h2_tri {
   color: #242526;
+  margin-top: 0;
 }
 
 .tri-filtres {
   background-color: #46D3D3;
+  background-size: 200%;
   box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4);
+  padding: 3% 10%;
   display: grid;
   grid-column-gap: 20px;
   grid-template-columns: 30% 60%;
   grid-template-areas: "tri filtre" "app reini";
 }
 
+.filtre_element {
+  list-style: none;
+  display: inline-block;
+  width: 12rem;
+}
+
+/*** Boutons
+    ========================================================================== */
 .bouton {
   max-width: 100px;
-  margin: 10px 5px;
+  margin: 30px 5px 5px 5px;
+  padding: 0px;
+  background-color: #242526;
+  border: none;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.bouton:hover {
+  color: #46D3D3;
+}
+
+.bouton:active {
+  box-shadow: inset 0px -3px 5px 6px rgba(0, 0, 0, 0.5);
+  width: 105%;
+}
+
+.bouton:hover p,
+.bouton:active p {
+  text-shadow: -4px -4px 15px #46D3D3, 4px 4px 15px #46D3D3;
 }
 
 /** Contrôles de page
@@ -290,12 +330,23 @@ h1,
   text-shadow: -4px -4px 15px rgba(255, 230, 7, 0.5), 4px 4px 15px rgba(255, 230, 7, 0.5);
 }
 
+.indicateur-page {
+  text-align: center;
+  margin: 5px;
+}
+
+.controle-page {
+  text-align: center;
+}
+
 /** Liens artistes
     ========================================================================== */
 .liste-artistes {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 75%;
+  margin: 100px auto;
 }
 
 .artiste_img {
@@ -306,6 +357,7 @@ h1,
   list-style: none;
   display: flex;
   flex-direction: column;
+  margin-top: 50px;
 }
 
 .artiste_info_nom,
