@@ -139,6 +139,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festival OFF - Liste des artistes</title>
     <?php include($niveau . 'inc/fragments/head-links.html'); ?>
+    <link rel="stylesheet" href="<?php echo $niveau ?>/css/style-clodiane.css">
 </head>
 
 <body>
@@ -152,53 +153,63 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     ?></h1>
 
 <div class="tri-filtres">
-    <h2 class="h2_tri">Trier :</h2>
-    <form class="tri_formulaire">
-        <select name="tri" id="tri" class="tri_liste-deroulante">
-            <option class="tri_choix" value="Par défault">Par défaut</option>
-            <option class="tri_choix" value="A-Z">A-Z</option>
-            <option class="tri_choix" value="Z-A">Z-A</option>
-            <option class="tri_choix" value="Par style">Par style</option>
-        </select>
-    </form>
-    <h2 class="h2_tri">Filtrer par styles</h2>
-    <form class="filtre_formulaire">
-        <input class="checkbox-style" type="checkbox" id="burlesque" name="style-filtre" value="burlesque">
-        <label class="label_checkbox-style" for="burlesque">Burlesque</label>
-        <input class="checkbox-style" type="checkbox" id="electro" name="style-filtre" value="electro">
-        <label class="label_checkbox-style" for="electro">Électro</label>
-        <input class="checkbox-style" type="checkbox" id="trash" name="style-filtre" value="trash">
-        <label class="label_checkbox-style" for="trash">Trash</label>
-        <input class="checkbox-style" type="checkbox" id="punk" name="style-filtre" value="punk">
-        <label class="label_checkbox-style" for="punk">Punk</label>
-        <input class="checkbox-style" type="checkbox" id="exprerimental" name="style-filtre" value="exprerimental">
-        <label class="label_checkbox-style" for="exprerimental">Exprérimental</label>
-        <input class="checkbox-style" type="checkbox" id="humour" name="style-filtre" value="humour">
-        <label class="label_checkbox-style" for="humour">Humour</label>
-        <input class="checkbox-style" type="checkbox" id="raggae" name="style-filtre" value="raggae">
-        <label class="label_checkbox-style" for="raggae">Raggae</label>
-        <input class="checkbox-style" type="checkbox" id="hip-hop" name="style-filtre" value="hip-hop">
-        <label class="label_checkbox-style" for="hip-hop">Hip-Hop</label>
-        <input class="checkbox-style" type="checkbox" id="rap" name="style-filtre" value="rap">
-        <label class="label_checkbox-style" for="rap">Rap</label>
-        <input class="checkbox-style" type="checkbox" id="folk" name="style-filtre" value="folk">
-        <label class="label_checkbox-style" for="folk">Folk</label>
-        <input class="checkbox-style" type="checkbox" id="country" name="style-filtre" value="country">
-        <label class="label_checkbox-style" for="country">Country</label>
-        <input class="checkbox-style" type="checkbox" id="franco" name="style-filtre" value="franco">
-        <label class="label_checkbox-style" for="franco">Franco</label>
-        <input class="checkbox-style" type="checkbox" id="indie" name="style-filtre" value="indie">
-        <label class="label_checkbox-style" for="indie">Indie</label>
-        <input class="checkbox-style" type="checkbox" id="pop" name="style-filtre" value="pop">
-        <label class="label_checkbox-style" for="pop">Pop</label>
-    </form>
-    <button class="reinitialiser">Réinitialiser  </button>
+    <div class="section-tri">
+        <h2 class="h2_tri">Trier :</h2>
+        <form class="tri_formulaire">
+            <select name="tri" id="tri" class="tri_liste-deroulante">
+                <option class="tri_choix" value="Par défault">Par défaut</option>
+                <option class="tri_choix" value="A-Z">A-Z</option>
+                <option class="tri_choix" value="Z-A">Z-A</option>
+                <option class="tri_choix" value="Par style">Par style</option>
+            </select>
+        </form>
+    </div>
+    <div class="section-filtre">
+        <h2 class="h2_tri">Filtrer par styles</h2>
+        <form class="filtre_formulaire">
+            <input class="checkbox-style" type="checkbox" id="burlesque" name="style-filtre" value="burlesque">
+            <label class="label_checkbox-style" for="burlesque">Burlesque</label>
+            <input class="checkbox-style" type="checkbox" id="electro" name="style-filtre" value="electro">
+            <label class="label_checkbox-style" for="electro">Électro</label>
+            <input class="checkbox-style" type="checkbox" id="trash" name="style-filtre" value="trash">
+            <label class="label_checkbox-style" for="trash">Trash</label>
+            <input class="checkbox-style" type="checkbox" id="punk" name="style-filtre" value="punk">
+            <label class="label_checkbox-style" for="punk">Punk</label>
+            <input class="checkbox-style" type="checkbox" id="exprerimental" name="style-filtre" value="exprerimental">
+            <label class="label_checkbox-style" for="exprerimental">Exprérimental</label>
+            <input class="checkbox-style" type="checkbox" id="humour" name="style-filtre" value="humour">
+            <label class="label_checkbox-style" for="humour">Humour</label>
+            <input class="checkbox-style" type="checkbox" id="raggae" name="style-filtre" value="raggae">
+            <label class="label_checkbox-style" for="raggae">Raggae</label>
+            <input class="checkbox-style" type="checkbox" id="hip-hop" name="style-filtre" value="hip-hop">
+            <label class="label_checkbox-style" for="hip-hop">Hip-Hop</label>
+            <input class="checkbox-style" type="checkbox" id="rap" name="style-filtre" value="rap">
+            <label class="label_checkbox-style" for="rap">Rap</label>
+            <input class="checkbox-style" type="checkbox" id="folk" name="style-filtre" value="folk">
+            <label class="label_checkbox-style" for="folk">Folk</label>
+            <input class="checkbox-style" type="checkbox" id="country" name="style-filtre" value="country">
+            <label class="label_checkbox-style" for="country">Country</label>
+            <input class="checkbox-style" type="checkbox" id="franco" name="style-filtre" value="franco">
+            <label class="label_checkbox-style" for="franco">Franco</label>
+            <input class="checkbox-style" type="checkbox" id="indie" name="style-filtre" value="indie">
+            <label class="label_checkbox-style" for="indie">Indie</label>
+            <input class="checkbox-style" type="checkbox" id="pop" name="style-filtre" value="pop">
+            <label class="label_checkbox-style" for="pop">Pop</label>
+        </form>
+    </div>
+
+    <button class="bouton appliquer"><p>Appliquer</p></button>
+    <button class="bouton reinitialiser"><p>Réinitialiser</p></button>
 </div>
 <ul class="liste-artistes">
     <?php
     for($intCpt=0;$intCpt<count($arr_artiste);$intCpt++){
+        $str_classArtistePair = "pair";
+        if($intCpt%2==0){
+            $str_classArtistePair = "impair";
+        }
     ?>
-    <li class="artistes">
+    <li class="artistes <?php echo $str_classArtistePair?>">
         <picture class="artiste_img">
             <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
         </picture>
@@ -233,33 +244,44 @@ if(isset($_GET["id_style"])){
 //Si il n'y en a pas
 else{
     if($id_page<($nbPages-1)){
-        $str_queryPageSuivante="./index.php?id_page=".($id_page+1);
+        $hrefSuivante="href='./index.php?id_page=".($id_page+1)."'";
         $str_classPageSuivante="suivante actif";
     }
     else{
+        $hrefSuivante = "";
         $str_classPageSuivante="suivante inactif";
     }
     if($id_page>0) {
-        $str_queryPagePrecedente = "./index.php?id_page=".($id_page-1);
+        $hrefPrecedente = "href='./index.php?id_page=".($id_page-1)."'";
         $str_classPagePrecedente="precedente actif";
     }
     else{
+        $hrefPrecedente = "";
         $str_classPagePrecedente="precedente inactif";
     }
-    echo "Page ".($id_page+1)?> de <?php echo $nbPages;
+    echo "<p class='indicateur-page'>Page ".($id_page+1)?> de <?php echo $nbPages."</p>";
 }
 ?>
 <div class="controle-page">
-    <a class="<?php echo $str_classPagePrecedente ?>" href="<?php echo $str_queryPagePrecedente ?>">Précédent</a>
-
+    <a class="<?php echo $str_classPagePrecedente ?>" <?php echo $hrefPrecedente ?>">Précédent</a>
     <?php
     for($intCptPagination=0; $intCptPagination<$nbPages; $intCptPagination++){
-        echo "<a class='page1 actif' href='./index.php?id_page=$intCptPagination'>".($intCptPagination+1)."</a>";
+        $str_classActif = "";
+        $href = "";
+        if($intCptPagination == $id_page){
+            $str_classActif = "inactif";
+        }
+        else{
+            $str_classActif = "actif";
+            $href = "href='./index.php?id_page=$intCptPagination'";
+        }
+        $int_pageLien = $intCptPagination+1;
+        echo "<a class='page $str_classActif' $href>".$int_pageLien."</a>";
         echo " ";
     }
     ?>
 
-    <a class="<?php echo $str_classPageSuivante ?>" href="<?php echo $str_queryPageSuivante ?>">Suivant</a>
+    <a class="<?php echo $str_classPageSuivante ?>" <?php echo $hrefSuivante ?>">Suivant</a>
 </div>
 <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
 </body>
