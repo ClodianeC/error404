@@ -190,15 +190,17 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         $str_queryArtiste = "./fiche/index.php?id_artiste=".$arr_artiste[$intCpt]['id_artiste'];
     ?>
     <li class="artistes <?php echo $str_classArtistePair?>">
-        <a class="artistes_lien" href="<?php echo $str_queryArtiste ?>">
-            <picture class="artiste_img">
-                <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
-            </picture>
-        </a>
-            <div class="artiste_info">
-                <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
-                <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
-            </div>
+        <div class="artistes_deco">
+            <a class="artistes_lien" href="<?php echo $str_queryArtiste ?>">
+                <picture class="artiste_img">
+                    <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
+                </picture>
+            </a>
+        </div>
+        <div class="artiste_info">
+            <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
+            <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
+        </div>
 
     </li>
     <?php
@@ -206,6 +208,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     ?>
 </ul>
 <?php
+echo "<div class='controle-page'>";
 if(isset($_GET["id_style"])){
     //Déterminer max page si filtre
     $strRequeteNbArtistesFiltres = "SELECT COUNT(*) AS nbEnregistrementsArtistesFiltres FROM ti_style_artiste WHERE id_style=".$_GET["id_style"];
@@ -245,7 +248,7 @@ else{
     echo "<p class='indicateur-page'>Page ".($id_page+1)?> de <?php echo $nbPages."</p>";
 }
 ?>
-<div class="controle-page">
+
     <a class="<?php echo $str_classPagePrecedente ?>" <?php echo $hrefPrecedente ?>">Précédent</a>
     <?php
     for($intCptPagination=0; $intCptPagination<$nbPages; $intCptPagination++){

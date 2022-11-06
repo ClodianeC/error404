@@ -337,6 +337,8 @@ h1,
 
 .controle-page {
   text-align: center;
+  background-color: #242526;
+  padding: 10px;
 }
 
 /** Liens artistes
@@ -362,12 +364,13 @@ h1,
 
 .artiste_info_nom,
 .artiste_info_style {
-  background-color: #242526;
   max-width: 245px;
 }
 
 .artiste_info {
-  margin-left: 20px;
+  background-color: #242526;
+  padding-left: 20px;
+  min-width: 200px;
 }
 
 @media (min-width: 800px) {
@@ -379,16 +382,66 @@ h1,
     list-style: none;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin-right: auto;
   }
   .artistes.pair {
     list-style: none;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin-left: auto;
   }
   .artiste_img {
     order: 0;
+    position: relative;
+    z-index: 1;
+    width: 260px;
+  }
+  .artiste_info {
+    padding-left: 20px;
+    min-width: 200px;
+    height: 240px;
+    padding: 10px 20px 5px 10px;
+    position: relative;
+    padding-left: 70px;
+    left: -30px;
+    z-index: 0;
+  }
+  .pair .artiste_info {
+    border: 3px solid #AC3AB6;
+    box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+  }
+  .impair .artiste_info {
+    border-right: 3px solid #FFE607;
+    border-left: 2px solid #FFE607;
+    border-top: 3px solid #FFE607;
+    border-bottom: 3px solid #FFE607;
+    box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+  }
+  .artistes_deco {
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    width: 290px;
+  }
+  .artistes_deco:before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    right: 25px;
+    top: -5px;
+    bottom: 30px;
+  }
+  .pair .artistes_deco:before {
+    border: 3px solid #46D3D3;
+    box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+    z-index: 0;
+  }
+  .impair .artistes_deco:before {
+    border: 3px solid #AC3AB6;
+    box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+    z-index: 0;
   }
 }
 
