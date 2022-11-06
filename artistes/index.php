@@ -142,15 +142,10 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <link rel="stylesheet" href="<?php echo $niveau ?>css/style-clodiane.css">
 </head>
 
-<body>
+<div>
 <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
 
-<h1>Artistes
-    <?php
-    if(isset($_GET["id_style"])){
-    echo " du style ".$arr_style[($_GET["id_style"]-1)]["nom_style"];
-    }
-    ?></h1>
+
 
 <div class="tri-filtres">
     <div class="section-tri">
@@ -180,12 +175,31 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <button class="bouton appliquer"><p>Appliquer</p></button>
     <button class="bouton reinitialiser"><p>Réinitialiser</p></button>
 </div>
+<div class="titre">
+    <div class="h1_deco">
+        <h1 class="h1">Artistes
+            <?php
+            if(isset($_GET["id_style"])){
+                echo " du style ".$arr_style[($_GET["id_style"]-1)]["nom_style"];
+            }
+            ?>
+        </h1>
+    </div>
+</div>
+
+
+
+
 <ul class="liste-artistes">
     <?php
     for($intCpt=0;$intCpt<count($arr_artiste);$intCpt++){
         $str_classArtistePair = "pair";
+        $str_classLongTitre = "";
         if($intCpt%2==0){
             $str_classArtistePair = "impair";
+        }
+        if(strlen($arr_artiste[$intCpt]["nom_artiste"])>15){
+            $str_classLongTitre = "longTitre";
         }
         $str_queryArtiste = "./fiche/index.php?id_artiste=".$arr_artiste[$intCpt]['id_artiste'];
     ?>
@@ -198,7 +212,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
             </a>
         </div>
         <div class="artiste_info">
-            <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
+            <h2 class="artiste_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
             <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
         </div>
 
@@ -208,7 +222,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     ?>
 </ul>
 <?php
-echo "<div class='controle-page'>";
+echo "<div class='controles_div_total'><div class='controles_deco'><div class='controle-page'>";
 if(isset($_GET["id_style"])){
     //Déterminer max page si filtre
     $strRequeteNbArtistesFiltres = "SELECT COUNT(*) AS nbEnregistrementsArtistesFiltres FROM ti_style_artiste WHERE id_style=".$_GET["id_style"];
@@ -268,6 +282,8 @@ else{
     ?>
 
     <a class="<?php echo $str_classPageSuivante ?>" <?php echo $hrefSuivante ?>">Suivant</a>
+</div>
+</div>
 </div>
 <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
 </body>
