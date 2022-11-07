@@ -93,30 +93,24 @@ h1,
 }
 
 h2,
-.h2 { /* = 30px */
-  font-size: 3rem;
+.h2 { /* = 35px */
+  font-size: 3.5rem;
 }
 @media (min-width: 800px) {
   h2,
-  .h2 { /* = 35px */
-    font-size: 3.5rem;
+  .h2 { /* = 40px */
+    font-size: 4rem;
   }
 }
 
 h3,
-.h3 { /* = 18px */
-  font-size: 1.8rem;
-}
-@media (min-width: 600px) {
-  h3,
-  .h3 {  /* = 24px */
-    font-size: 2.4rem;
-  }
+.h3 { /* = 30px */
+  font-size: 3rem;
 }
 @media (min-width: 800px) {
   h3,
-  .h3 { /* = 30px */
-    font-size: 3rem;
+  .h3 {  /* = 35px */
+    font-size: 3.5rem;
   }
 }
 

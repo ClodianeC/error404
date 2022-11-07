@@ -10,6 +10,7 @@
 *** Boutons
 ** Contrôles de page
 ** Liens artistes
+** Liens artistes vedettes
 */
 /* Normalize
    ========================================================================== */
@@ -167,31 +168,25 @@ h1,
   }
 }
 h2,
-.h2 { /* = 30px */
-  font-size: 3rem;
+.h2 { /* = 35px */
+  font-size: 3.5rem;
 }
 
 @media (min-width: 800px) {
   h2,
-.h2 { /* = 35px */
-    font-size: 3.5rem;
+.h2 { /* = 40px */
+    font-size: 4rem;
   }
 }
 h3,
-.h3 { /* = 18px */
-  font-size: 1.8rem;
+.h3 { /* = 30px */
+  font-size: 3rem;
 }
 
-@media (min-width: 600px) {
-  h3,
-.h3 { /* = 24px */
-    font-size: 2.4rem;
-  }
-}
 @media (min-width: 800px) {
   h3,
-.h3 { /* = 30px */
-    font-size: 3rem;
+.h3 { /* = 35px */
+    font-size: 3.5rem;
   }
 }
 h4,
@@ -275,6 +270,19 @@ h1 {
   box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
 }
 
+h2.titrePage,
+h2.titreVedette {
+  color: #FFFFFF;
+  background-color: #242526;
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border: 3px solid #AC3AB6;
+  border-radius: 4px;
+  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+}
+
 h1,
 .desole,
 .artiste_info_nom,
@@ -321,6 +329,10 @@ h1,
   list-style: none;
   display: inline-block;
   width: 12rem;
+}
+
+.checkbox-style {
+  accent-color: #242526;
 }
 
 /*** Boutons
@@ -445,7 +457,7 @@ h1,
   max-width: 245px;
 }
 
-h2.longTitre {
+h3.longTitre {
   font-size: 170%;
 }
 
@@ -460,18 +472,16 @@ h2.longTitre {
     display: flex;
     flex-direction: column;
   }
-  .artistes.impair {
+  .artistes {
     list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+  .artistes.impair {
     margin-right: auto;
   }
   .artistes.pair {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     margin-left: auto;
   }
   .artiste_img {
@@ -521,6 +531,49 @@ h2.longTitre {
     border: 3px solid #AC3AB6;
     box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
     z-index: 0;
+  }
+}
+/** Liens artistes vedettes
+    ========================================================================== */
+.liste_artistes-vedettes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 75%;
+  margin: 50px auto;
+}
+
+@media (min-width: 800px) {
+  .liste_artistes-vedettes {
+    flex-direction: row;
+    margin: 35px auto 85px auto;
+    padding: 0;
+  }
+  .artistes-vedettes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  .artiste-vedettes_info {
+    text-align: center;
+    background-color: #242526;
+    width: 200px;
+    padding: 5px;
+    color: #FFFFFF;
+  }
+  .artiste-vedettes_info_nom {
+    height: 70px;
+    line-height: 40px;
+    margin: 15px 0;
+  }
+  .artiste-vedettes_img img {
+    max-width: 220px;
+  }
+  .artiste-vedettes_info_style {
+    margin: 0;
   }
 }
 
