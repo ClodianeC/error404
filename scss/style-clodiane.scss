@@ -41,21 +41,16 @@ body{
   background-image: url("../images/fond/neons-mobile.png");
   background-size: 100%;
 }
-@media (min-width:800px) {
-  body{
-    background-image: url("../images/fond/neons-table.png");
-  }
+.titre{
+   text-align: center;
 }
 h1{
-  background-color: $charcoal;
-  display: inline-block;
-  padding: 10px 20px;
-  position: relative;
-  z-index: 1;
-}
-.titre{
-  text-align: center;
-}
+   background-color: $charcoal;
+   display: inline-block;
+   padding: 10px 20px;
+   position: relative;
+   z-index: 1;
+ }
 .h1_deco{
   padding: 15px;
   display: inline-block;
@@ -97,12 +92,15 @@ h2.titreVedette{
 }
 h1,
 .desole,
-.artiste_info_nom,
-.artiste_info_style,
 .indicateur-page{
   color: $blanc;
 }
 
+@media (min-width:800px) {
+  body{
+    background-image: url("../images/fond/neons-table.png");
+  }
+}
 
 
 /** Tri et filtres
@@ -161,6 +159,9 @@ h1,
 
 /** Contrôles de page
     ========================================================================== */
+.controles_div_total{
+  text-align: center;
+}
 .page.inactif{
   color: $mauve;
   text-shadow: -4px -4px 15px $mauve, 4px 4px 15px $mauve;
@@ -188,9 +189,6 @@ h1,
   padding: 10px 20px;
   position: relative;
   z-index: 1;
-}
-.controles_div_total{
-  text-align: center;
 }
 .controles_deco{
   padding: 15px;
@@ -248,16 +246,15 @@ h1,
   right: 25px;
   top: -5px;
   bottom: 30px;
+  z-index: 0;
 }
 .pair .artistes_deco:before{
   border: 3px solid $bleu;
   box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
-  z-index: 0;
 }
 .impair .artistes_deco:before{
   border: 3px solid $mauve;
   box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
-  z-index: 0;
 }
 .artistes{
   list-style: none;
@@ -269,6 +266,7 @@ h1,
 .artiste_info_nom,
 .artiste_info_style{
   max-width: 245px;
+  color: $blanc;
 }
 h3.longTitre{
   font-size: 170%;
@@ -301,17 +299,26 @@ h3.longTitre{
 
 @media(min-width:800px){
   .artiste_info{
-    min-width: 200px;
     margin-left: 0;
+    min-width: 300px;
+    height: 240px;
+    padding: 10px 20px 5px 50px;
+    position: relative;
+    left: -30px;
+    top: 0;
+  }
+  .pair .artiste_info{
+    border: 3px solid $mauve;
+    box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
+  }
+  .impair .artiste_info{
+    border: 3px solid $jaune;
+    box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
   }
   .liste-artistes{
-    display: flex;
-    flex-direction: column;
     margin: 50px auto;
   }
   .artistes{
-    list-style: none;
-    display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 50px;
@@ -325,24 +332,7 @@ h3.longTitre{
   .artiste_img{
     order: 0;
   }
-  .artiste_info{
-    min-width: 300px;
-    height: 240px;
-    padding: 10px 20px 5px 10px;
-    position: relative;
-    padding-left: 50px;
-    left: -30px;
-    z-index: 0;
-    top: 0;
-    }
-  .pair .artiste_info{
-    border: 3px solid $mauve;
-    box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
-  }
-  .impair .artiste_info{
-    border: 3px solid $jaune;
-    box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
-  }
+
 }
 
 /** Liens artistes vedettes
@@ -370,16 +360,19 @@ h3.tresLongTitre{
   text-decoration: underline $blanc;
 }
 .artistes-vedettes{
-     //list-style: none;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
 }
 .artiste-vedettes_info_nom{
   height: 70px;
   line-height: 40px;
   margin: 15px 0;
+}
+.artiste-vedettes_img{
+   position: relative;
+   z-index: 1;
 }
 .artiste-vedettes_img img{
   max-width: 220px;
@@ -406,10 +399,7 @@ h3.tresLongTitre{
   border: 3px solid $bleu;
   box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
 }
-.artiste-vedettes_img{
-  position: relative;
-  z-index: 1;
-}
+
 .artistes-vedettes_deco{
   padding: 15px;
   display: inline-block;
