@@ -16,13 +16,13 @@
    ========================================================================== */
 //@import "normalize";
 
-/* Utilitaires
-   ========================================================================== */
-@import "utilitaire/_variables";
-
 /* Charte typographique
    ========================================================================== */
 @import "base/_typo";
+
+/* Utilitaires
+   ========================================================================== */
+@import "utilitaire/_variables";
 
 
 /* Mise en page
@@ -253,6 +253,15 @@ h3.longTitre{
   padding-left: 20px;
   min-width: 200px;
 }
+.artistes_lien:link,
+.artistes_lien:visited{
+  text-decoration: none;
+}
+.artistes_lien:hover,
+.artistes_lien:active{
+  text-decoration: underline $blanc;
+}
+
 @media(min-width:800px){
   .liste-artistes{
     display: flex;
@@ -264,10 +273,10 @@ h3.longTitre{
     flex-direction: row;
     align-items: center;
   }
-  .artistes.impair{
+  .artistes_lien.impair{
     margin-right: auto;
   }
-  .artistes.pair{
+  .artistes_lien.pair{
     margin-left: auto;
   }
   .artiste_img{
@@ -277,7 +286,6 @@ h3.longTitre{
     width: 260px;
   }
   .artiste_info{
-    padding-left: 20px;
     min-width: 300px;
     height: 240px;
     padding: 10px 20px 5px 10px;
@@ -322,6 +330,10 @@ h3.longTitre{
 
 /** Liens artistes vedettes
     ========================================================================== */
+h3.tresLongTitre{
+  font-size: 120%;
+  line-height: 125%;
+}
 .liste_artistes-vedettes{
   list-style: none;
   display: flex;
@@ -330,9 +342,19 @@ h3.longTitre{
   max-width: 75%;
   margin: 50px auto;
 }
+.artistes-vedettes_lien:link,
+.artistes-vedettes_lien:visited{
+  text-decoration: none;
+}
+.artistes-vedettes_lien:hover,
+.artistes-vedettes_lien:active{
+  text-decoration: underline $blanc;
+}
 @media(min-width:800px){
   .liste_artistes-vedettes{
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 35px auto 85px auto;
     padding: 0;
   }
@@ -342,13 +364,6 @@ h3.longTitre{
     flex-direction: column;
     align-items: center;
     margin: 10px;
-  }
-  .artiste-vedettes_info{
-    text-align: center;
-    background-color: $charcoal;
-    width: 200px;
-    padding: 5px;
-    color: $blanc;
   }
   .artiste-vedettes_info_nom{
     height: 70px;
@@ -360,5 +375,52 @@ h3.longTitre{
   }
   .artiste-vedettes_info_style{
     margin: 0;
+  }
+  .artiste-vedettes_info{
+    text-align: center;
+    background-color: $charcoal;
+    width: 200px;
+    color: $blanc;
+    padding: 70px 20px 15px 10px;
+    position: relative;
+    left: -40px;
+    top: -100px;
+    z-index: 0;
+  }
+  .pair .artiste-vedettes_info{
+    border: 3px solid $mauve;
+    box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
+  }
+  .impair .artiste-vedettes_info{
+    border: 3px solid $bleu;
+    box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
+  }
+  .artiste-vedettes_img{
+    position: relative;
+    z-index: 1;
+  }
+  .artistes-vedettes_deco{
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    width: 290px;
+  }
+  .artistes-vedettes_deco:before{
+    content:"";
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    top: -5px;
+    bottom: 30px;
+  }
+  .pair .artistes-vedettes_deco:before{
+    border: 3px solid $bleu;
+    box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
+    z-index: 0;
+  }
+  .impair .artistes-vedettes_deco:before{
+    border: 3px solid $jaune;
+    box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
+    z-index: 0;
   }
 }

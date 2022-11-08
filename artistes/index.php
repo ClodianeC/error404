@@ -112,10 +112,10 @@ for($intCptStyle = 0; $rangee=$pdosResultat->fetch();$intCptStyle++){
 
 //Requete artistes complets
 $str_requeteArtisteComplet = "SELECT id_artiste, nom_artiste FROM t_artiste";
-$pdosResultat = $pdoConnexion->query($str_requeteArtisteComplet);
+$pdosResultatC = $pdoConnexion->query($str_requeteArtisteComplet);
 $arr_artisteComplet = array();
 
-for($intCptArtistesC = 0; $rangee=$pdosResultat->fetch();$intCptArtistesC++){
+for($intCptArtistesC = 0; $rangee=$pdosResultatC->fetch();$intCptArtistesC++){
     $arr_artisteComplet[$intCptArtistesC]["id_artiste"]=$rangee["id_artiste"];
     $arr_artisteComplet[$intCptArtistesC]["nom_artiste"]=$rangee["nom_artiste"];
 
@@ -175,34 +175,35 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
 <div>
 <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
 
-<div class="tri-filtres">
+<form class="tri-filtres">
     <div class="section-tri">
         <h2 class="h2_tri">Trier :</h2>
-        <form class="tri_formulaire">
+        <div class="tri_formulaire">
             <select name="tri" id="tri" class="tri_liste-deroulante">
                 <option class="tri_choix" value="Par défault">Par défaut</option>
                 <option class="tri_choix" value="A-Z">A-Z</option>
                 <option class="tri_choix" value="Z-A">Z-A</option>
                 <option class="tri_choix" value="Par style">Par style</option>
             </select>
-        </form>
+        </div>
     </div>
     <div class="section-filtre">
         <h2 class="h2_tri">Filtrer par styles :</h2>
-        <form class="filtre_formulaire">
+        <div class="filtre_formulaire">
             <?php
             for($intCptFiltre = 0; $intCptFiltre < count($arr_style); $intCptFiltre++){
                 $str_style = $arr_style[$intCptFiltre]["nom_style"];
-                echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='style-filtre' value='".$str_style."'>";
+                $id_style = $arr_style[$intCptFiltre]["id_style"];
+                echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='style-filtre' value='".$id_style."'>";
                 echo "<label class='label_checkbox-style'for='".$str_style."'>$str_style</label></li>";
             }
             ?>
-        </form>
+        </div>
     </div>
 
-    <button class="bouton appliquer"><p>Appliquer</p></button>
-    <button class="bouton reinitialiser"><p>Réinitialiser</p></button>
-</div>
+    <button type="submit" class="bouton appliquer"><p>Appliquer</p></button>
+    <button type="reset" class="bouton reinitialiser"><p>Réinitialiser</p></button>
+</form>
 <div class="titre">
     <div class="h1_deco">
         <h1 class="h1">Artistes
@@ -224,25 +225,24 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         if($intCpt%2==0){
             $str_classArtistePair = "impair";
         }
-        if(strlen($arr_artiste[$intCpt]["nom_artiste"])>15){
+        if(strlen($arr_artiste[$intCpt]["nom_artiste"])>=15){
             $str_classLongTitre = "longTitre";
         }
         $str_queryArtiste = "./fiche/index.php?id_artiste=".$arr_artiste[$intCpt]['id_artiste'];
     ?>
-    <li class="artistes <?php echo $str_classArtistePair?>">
-        <div class="artistes_deco">
-            <a class="artistes_lien" href="<?php echo $str_queryArtiste ?>">
+    <a class="artistes_lien <?php echo $str_classArtistePair?>" href="<?php echo $str_queryArtiste ?>">
+        <li class="artistes <?php echo $str_classArtistePair?>">
+            <div class="artistes_deco">
                 <picture class="artiste_img">
                     <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
                 </picture>
-            </a>
-        </div>
-        <div class="artiste_info">
-            <h3 class="artiste_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h3>
-            <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
-        </div>
-
-    </li>
+            </div>
+            <div class="artiste_info">
+                <h3 class="artiste_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h3>
+                <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
+            </div>
+        </li>
+    </a>
     <?php
     }
     ?>
@@ -260,25 +260,29 @@ echo "<ul class='liste_artistes-vedettes'>";
             if($intCptVedette%2==0){
                 $str_classArtistePair = "impair";
             }
-            if(strlen($arr_artisteComplet[$int_randFinal]["nom_artiste"])>12){
+            if(strlen($arr_artisteComplet[$int_randFinal]["nom_artiste"])>=11){
                 $str_classLongTitre = "longTitre";
+                if(strlen($arr_artisteComplet[$int_randFinal]["nom_artiste"])>=15){
+                    $str_classLongTitre = "tresLongTitre";
+                }
+
             }
             ?>
-            <li class="artistes-vedettes <?php echo $str_classArtistePair?>">
-                <div class="artistes-vedettes_deco">
-                    <a class="artistes-vedettes_lien" href="<?php echo $str_queryVedette ?>">
+            <a class="artistes-vedettes_lien" href="<?php echo $str_queryVedette ?>">
+                <li class="artistes-vedettes <?php echo $str_classArtistePair?>">
+                    <div class="artistes-vedettes_deco">
                         <picture class="artiste-vedettes_img">
                             <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artisteComplet[$int_randFinal]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artisteComplet[$int_randFinal]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artisteComplet[$int_randFinal]['id_artiste']."_w520.jpg 2x'>"; ?>
                         </picture>
-                    </a>
-                </div>
-                <div class="artiste-vedettes_info">
-                    <h3 class="artiste-vedettes_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artisteComplet[$int_randFinal]["nom_artiste"]?></h3>
-                    <p class="artiste-vedettes_info_style"><?php echo $arr_artisteComplet[$int_randFinal]["style_artiste"]?></p>
-                </div>
+                    </div>
+                    <div class="artiste-vedettes_info">
+                        <h3 class="artiste-vedettes_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artisteComplet[$int_randFinal]["nom_artiste"]?></h3>
+                        <p class="artiste-vedettes_info_style"><?php echo $arr_artisteComplet[$int_randFinal]["style_artiste"]?></p>
+                    </div>
+                </li>
+            </a>
 
-            </li>
-            <?php
+<?php
         }
     }
 echo "</ul>";

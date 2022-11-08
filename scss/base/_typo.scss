@@ -1,10 +1,8 @@
 /**
  * Typographie responsive (Mobile First)
    ========================================================================
- * Les valeurs de taille de police suggérées ici sont à titre indicatif.
- * À ajuster selon la direction visuelle et le choix de polices de caractères.
  *
- * @author Prénom Nom courriel
+ * @author Clodiane Charette 2164515@csfoy.ca
  *
  * TABLE DES MATIÈRES
  * Polices
@@ -14,34 +12,18 @@
  *
  * Doc des points de rupture :
  * ==========================================================================
- * Écran étroit : de 0 à 599px
- * point de rupture: 600px
- *
- * Écran moyen : de 600 à 799px
+ * Écran étroit : de 0 à 800px
  * point de rupture: 800px
  *
- * Écran large : 800px et +
+ * Écran large : 801px et +
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
-/* Polices */
-/* Selon le projet, il est souvent préférable d'utiliser le lien @import des Google Fonts
- * plutôt que de servir directement les polices de caractères à l'aide d'instructions @font-face
- * et d'un dossier de polices dans la structure de répertoires.
- * La méthode ci-dessous vise à offrir dans l'ordre de priorité les 3 formats possibles pour
- * assurer la meilleure compatibilité.
- */
-@font-face {
-  font-family: RubikDirt;
-  src:url("../../font/RubikDirt-Regular.ttf")format('truetype');
-}
-@font-face {
-  font-family: Alata;
-  src:url("../../font/alata-regular.ttf") format('truetype');
-}
 h1,
 .h1{
-  font-family: RubikDirt, sans-serif ;
+  font-family: "RubikDirt", sans-serif ;
 }
 h2,
 .h2,
@@ -49,10 +31,10 @@ h3,
 .h3,
 h4,
 .h4 {
-  font-family: Alata, sans-serif ;
+  font-family: "Alata", sans-serif ;
 }
 body{
-  font-family: Arial, sans-serif ;
+  font-family: "Arial", sans-serif ;
 }
 
 

@@ -14,75 +14,13 @@
 */
 /* Normalize
    ========================================================================== */
-/* Utilitaires
-   ========================================================================== */
-/*** Clearfix ***/
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/*** Harmoniser le modèle de boîte avec Box-Sizing ***/
-html {
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-/* Images fluides */
-img {
-  max-width: 100%;
-}
-
-/*** Styles de base ***/
-abbr[title] {
-  text-decoration: none;
-  cursor: help;
-}
-
-abbr[title]:hover {
-  background-color: rgba(244, 161, 71, 0.25);
-}
-
-/** Accessibilité
-  * Pour cacher visuellement tout en gardant accessible un contenu:
-  * screen-reader-only ou visuallyhidden **/
-.screen-reader-only,
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.screen-reader-only.focusable:active,
-.screen-reader-only.focusable:focus,
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
-
 /* Charte typographique
    ========================================================================== */
 /**
  * Typographie responsive (Mobile First)
    ========================================================================
- * Les valeurs de taille de police suggérées ici sont à titre indicatif.
- * À ajuster selon la direction visuelle et le choix de polices de caractères.
  *
- * @author Prénom Nom courriel
+ * @author Clodiane Charette 2164515@csfoy.ca
  *
  * TABLE DES MATIÈRES
  * Polices
@@ -92,32 +30,16 @@ abbr[title]:hover {
  *
  * Doc des points de rupture :
  * ==========================================================================
- * Écran étroit : de 0 à 599px
- * point de rupture: 600px
- *
- * Écran moyen : de 600 à 799px
+ * Écran étroit : de 0 à 800px
  * point de rupture: 800px
  *
- * Écran large : 800px et +
+ * Écran large : 801px et +
  */
-/* Polices */
-/* Selon le projet, il est souvent préférable d'utiliser le lien @import des Google Fonts
- * plutôt que de servir directement les polices de caractères à l'aide d'instructions @font-face
- * et d'un dossier de polices dans la structure de répertoires.
- * La méthode ci-dessous vise à offrir dans l'ordre de priorité les 3 formats possibles pour
- * assurer la meilleure compatibilité.
- */
-@font-face {
-  font-family: RubikDirt;
-  src: url("../../font/RubikDirt-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: Alata;
-  src: url("../../font/alata-regular.ttf") format("truetype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
 h1,
 .h1 {
-  font-family: RubikDirt, sans-serif;
+  font-family: "RubikDirt", sans-serif;
 }
 
 h2,
@@ -126,11 +48,11 @@ h3,
 .h3,
 h4,
 .h4 {
-  font-family: Alata, sans-serif;
+  font-family: "Alata", sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 /* Base décimale */
@@ -206,6 +128,66 @@ h4,
     font-size: 2.2rem;
   }
 }
+/* Utilitaires
+   ========================================================================== */
+/*** Clearfix ***/
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*** Harmoniser le modèle de boîte avec Box-Sizing ***/
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Images fluides */
+img {
+  max-width: 100%;
+}
+
+/*** Styles de base ***/
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+}
+
+abbr[title]:hover {
+  background-color: rgba(244, 161, 71, 0.25);
+}
+
+/** Accessibilité
+  * Pour cacher visuellement tout en gardant accessible un contenu:
+  * screen-reader-only ou visuallyhidden **/
+.screen-reader-only,
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.screen-reader-only.focusable:active,
+.screen-reader-only.focusable:focus,
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
 /* Mise en page
    ========================================================================== */
 /** Temporaire
@@ -467,6 +449,16 @@ h3.longTitre {
   min-width: 200px;
 }
 
+.artistes_lien:link,
+.artistes_lien:visited {
+  text-decoration: none;
+}
+
+.artistes_lien:hover,
+.artistes_lien:active {
+  text-decoration: underline #FFFFFF;
+}
+
 @media (min-width: 800px) {
   .liste-artistes {
     display: flex;
@@ -478,10 +470,10 @@ h3.longTitre {
     flex-direction: row;
     align-items: center;
   }
-  .artistes.impair {
+  .artistes_lien.impair {
     margin-right: auto;
   }
-  .artistes.pair {
+  .artistes_lien.pair {
     margin-left: auto;
   }
   .artiste_img {
@@ -491,7 +483,6 @@ h3.longTitre {
     width: 260px;
   }
   .artiste_info {
-    padding-left: 20px;
     min-width: 300px;
     height: 240px;
     padding: 10px 20px 5px 10px;
@@ -535,6 +526,11 @@ h3.longTitre {
 }
 /** Liens artistes vedettes
     ========================================================================== */
+h3.tresLongTitre {
+  font-size: 120%;
+  line-height: 125%;
+}
+
 .liste_artistes-vedettes {
   list-style: none;
   display: flex;
@@ -544,9 +540,21 @@ h3.longTitre {
   margin: 50px auto;
 }
 
+.artistes-vedettes_lien:link,
+.artistes-vedettes_lien:visited {
+  text-decoration: none;
+}
+
+.artistes-vedettes_lien:hover,
+.artistes-vedettes_lien:active {
+  text-decoration: underline #FFFFFF;
+}
+
 @media (min-width: 800px) {
   .liste_artistes-vedettes {
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 35px auto 85px auto;
     padding: 0;
   }
@@ -556,13 +564,6 @@ h3.longTitre {
     flex-direction: column;
     align-items: center;
     margin: 10px;
-  }
-  .artiste-vedettes_info {
-    text-align: center;
-    background-color: #242526;
-    width: 200px;
-    padding: 5px;
-    color: #FFFFFF;
   }
   .artiste-vedettes_info_nom {
     height: 70px;
@@ -574,6 +575,53 @@ h3.longTitre {
   }
   .artiste-vedettes_info_style {
     margin: 0;
+  }
+  .artiste-vedettes_info {
+    text-align: center;
+    background-color: #242526;
+    width: 200px;
+    color: #FFFFFF;
+    padding: 70px 20px 15px 10px;
+    position: relative;
+    left: -40px;
+    top: -100px;
+    z-index: 0;
+  }
+  .pair .artiste-vedettes_info {
+    border: 3px solid #AC3AB6;
+    box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+  }
+  .impair .artiste-vedettes_info {
+    border: 3px solid #46D3D3;
+    box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+  }
+  .artiste-vedettes_img {
+    position: relative;
+    z-index: 1;
+  }
+  .artistes-vedettes_deco {
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    width: 290px;
+  }
+  .artistes-vedettes_deco:before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    top: -5px;
+    bottom: 30px;
+  }
+  .pair .artistes-vedettes_deco:before {
+    border: 3px solid #46D3D3;
+    box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+    z-index: 0;
+  }
+  .impair .artistes-vedettes_deco:before {
+    border: 3px solid #FFE607;
+    box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+    z-index: 0;
   }
 }
 
