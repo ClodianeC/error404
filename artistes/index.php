@@ -213,7 +213,6 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
             }
             ?>
         </h1>
-
     </div>
 </div>
     <h2 class="h2 titrePage">Page <?php echo $id_page+1?></h2>
