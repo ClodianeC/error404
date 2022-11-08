@@ -3,13 +3,24 @@
 * Menu
 * Grille
 * Mise en page
-** Temporaire
-** Général
-** Tri et filtres
-*** Boutons
-** Contrôles de page
-** Liens artistes
-** Liens artistes vedettes
+  ** Temporaire
+  ** Général
+    *** H1
+    *** H2
+  ** Tri et filtres
+    *** Boutons
+  ** Contrôles de page
+    *** Style inactif/actif
+    *** Style link/visited/hover/active
+    *** Déco
+  ** Liens artistes
+    *** Styles lien
+    *** Contour info artiste
+    *** Contour img artiste
+  ** Liens artistes vedettes
+    *** Styles lien
+    *** Contour img artiste vedette
+    *** Contour info artiste
 */
 
 /* Normalize
@@ -41,6 +52,13 @@ body{
   background-image: url("../images/fond/neons-mobile.png");
   background-size: 100%;
 }
+@media (min-width:800px) {
+  body {
+    background-image: url("../images/fond/neons-table.png");
+  }
+}
+  /*** H1
+    ========================================================================== */
 .titre{
    text-align: center;
 }
@@ -78,6 +96,8 @@ h1{
   border: 3px solid $bleu;
   box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
 }
+  /*** H2
+  ========================================================================== */
 h2.titrePage,
 h2.titreVedette{
   color: $blanc;
@@ -94,12 +114,6 @@ h1,
 .desole,
 .indicateur-page{
   color: $blanc;
-}
-
-@media (min-width:800px) {
-  body{
-    background-image: url("../images/fond/neons-table.png");
-  }
 }
 
 
@@ -162,6 +176,8 @@ h1,
 .controles_div_total{
   text-align: center;
 }
+  /*** Style inactif/actif
+    ========================================================================== */
 .page.inactif{
   color: $mauve;
   text-shadow: -4px -4px 15px $mauve, 4px 4px 15px $mauve;
@@ -170,6 +186,19 @@ h1,
 .suivante.inactif{
   color: #A4A4A4;
 }
+.indicateur-page{
+   text-align: center;
+   margin: 5px;
+ }
+.controle-page{
+  display: inline-block;
+  background-color: $charcoal;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+}
+  /*** Style link/visited/hover/active
+    ========================================================================== */
 .actif:link,
 .actif:visited{
   color: $blanc;
@@ -179,17 +208,8 @@ h1,
   color: $jaune;
   text-shadow: -4px -4px 15px rgba($jaune, 0.5), 4px 4px 15px rgba($jaune, 0.5);
 }
-.indicateur-page{
-  text-align: center;
-  margin: 5px;
-}
-.controle-page{
-  display: inline-block;
-  background-color: $charcoal;
-  padding: 10px 20px;
-  position: relative;
-  z-index: 1;
-}
+  /*** Déco
+    ========================================================================== */
 .controles_deco{
   padding: 15px;
   display: inline-block;
@@ -227,12 +247,52 @@ h1,
   max-width: 75%;
   margin: 100px auto -50px auto;
 }
+h3.longTitre{
+   font-size: 170%;
+}
+.artistes{
+   list-style: none;
+   display: flex;
+   flex-direction: column;
+   margin-top: -30px;
+}
 .artiste_img{
   order: 1;
   position: relative;
   z-index: 1;
   width: 260px;
 }
+@media(min-width:800px){
+  .liste-artistes{
+    margin: 50px auto;
+  }
+  .artistes{
+    flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .artistes_lien.impair{
+    margin-right: auto;
+  }
+  .artistes_lien.pair{
+    margin-left: auto;
+  }
+  .artiste_img{
+    order: 0;
+  }
+}
+  /*** Styles lien
+    ========================================================================== */
+.artistes_lien:link,
+.artistes_lien:visited{
+  text-decoration: none;
+}
+.artistes_lien:hover,
+.artistes_lien:active{
+  text-decoration: underline $blanc;
+}
+  /*** Contour img artiste
+    ========================================================================== */
 .artistes_deco{
   padding: 15px;
   display: inline-block;
@@ -256,20 +316,28 @@ h1,
   border: 3px solid $mauve;
   box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
 }
-.artistes{
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  margin-top: -30px;
+@media(min-width:800px){
+  .artistes{
+    flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .artistes_lien.impair{
+    margin-right: auto;
+  }
+  .artistes_lien.pair{
+    margin-left: auto;
+  }
+  .artiste_img{
+    order: 0;
+  }
 }
-
+  /*** Contour info artiste
+    ========================================================================== */
 .artiste_info_nom,
 .artiste_info_style{
   max-width: 245px;
   color: $blanc;
-}
-h3.longTitre{
-  font-size: 170%;
 }
 .artiste_info{
   background-color: $charcoal;
@@ -288,15 +356,6 @@ h3.longTitre{
   border: 3px solid $jaune;
   box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
 }
-.artistes_lien:link,
-.artistes_lien:visited{
-  text-decoration: none;
-}
-.artistes_lien:hover,
-.artistes_lien:active{
-  text-decoration: underline $blanc;
-}
-
 @media(min-width:800px){
   .artiste_info{
     margin-left: 0;
@@ -315,24 +374,6 @@ h3.longTitre{
     border: 3px solid $jaune;
     box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
   }
-  .liste-artistes{
-    margin: 50px auto;
-  }
-  .artistes{
-    flex-direction: row;
-    align-items: center;
-    margin-top: 50px;
-  }
-  .artistes_lien.impair{
-    margin-right: auto;
-  }
-  .artistes_lien.pair{
-    margin-left: auto;
-  }
-  .artiste_img{
-    order: 0;
-  }
-
 }
 
 /** Liens artistes vedettes
@@ -349,6 +390,16 @@ h3.tresLongTitre{
   max-width: 75%;
   margin: 50px auto;
 }
+@media(min-width:800px){
+  .liste_artistes-vedettes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 35px auto 85px auto;
+    padding: 0;
+  }
+}
+  /*** Styles lien
+    ========================================================================== */
 .artistes-vedettes_lien:link,
 .artistes-vedettes_lien:visited{
   color: $blanc;
@@ -365,41 +416,15 @@ h3.tresLongTitre{
   align-items: center;
   margin: 10px;
 }
-.artiste-vedettes_info_nom{
-  height: 70px;
-  line-height: 40px;
-  margin: 15px 0;
-}
+  /*** Contour img artiste vedette
+    ========================================================================== */
 .artiste-vedettes_img{
-   position: relative;
-   z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 .artiste-vedettes_img img{
   max-width: 220px;
 }
-.artiste-vedettes_info_style{
-  margin: 0;
-}
-.artiste-vedettes_info{
-  text-align: center;
-  background-color: $charcoal;
-  width: 200px;
-  color: $blanc;
-  padding: 70px 20px 15px 10px;
-  position: relative;
-  left: -40px;
-  top: -100px;
-  z-index: 0;
-}
-.pair .artiste-vedettes_info{
-  border: 3px solid $mauve;
-  box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
-}
-.impair .artiste-vedettes_info{
-  border: 3px solid $bleu;
-  box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
-}
-
 .artistes-vedettes_deco{
   padding: 15px;
   display: inline-block;
@@ -424,12 +449,32 @@ h3.tresLongTitre{
   box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
   z-index: 0;
 }
-
-@media(min-width:800px){
-  .liste_artistes-vedettes {
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 35px auto 85px auto;
-    padding: 0;
-  }
+  /*** Contour info artiste vedette
+    ========================================================================== */
+.artiste-vedettes_info_nom{
+  height: 70px;
+  line-height: 40px;
+  margin: 15px 0;
+}
+.artiste-vedettes_info_style{
+  margin: 0;
+}
+.artiste-vedettes_info{
+  text-align: center;
+  background-color: $charcoal;
+  width: 200px;
+  color: $blanc;
+  padding: 70px 20px 15px 10px;
+  position: relative;
+  left: -40px;
+  top: -100px;
+  z-index: 0;
+}
+.pair .artiste-vedettes_info{
+  border: 3px solid $mauve;
+  box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
+}
+.impair .artiste-vedettes_info{
+  border: 3px solid $bleu;
+  box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
 }
