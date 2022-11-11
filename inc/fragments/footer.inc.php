@@ -1,7 +1,8 @@
 <footer class="footer">
+    <div class="block">
     <nav class="nav--principale footer-nav" aria-label="Menu principal">
         <ul class="nav--principale__list" id="navPrincipaleList">
-            <li class="nav--principale__list-elem">
+            <li class="nav--principale__list-elem ">
                 <a href="<?php echo $niveau ?>index.php" class="nav--principale__link nav--principale__link--active"
                    arria-current="page">Programmation</a>
             </li>
@@ -13,15 +14,20 @@
             </li>
         </ul>
     </nav>
-    <div class="footer_socials">
-        <div class="socials-icons footer-icons">
-            <ul class="socials-icons__list">
+    </div>
+    <div class="purpleBG">
+    <div class="footer-socials">
+        <div class="socials-icons ">
+            <ul class="socials-icons__list footer-icons">
                 <li class="socials-icons__list-elem"><a class="socials-icons-link" href="#"><img
-                                class="socials-icons-img src="" alt=""></a></li>
+                                class="socials-icons-img" src="<?php echo $niveau ?>image_accueil/accueil_table/reseau_sociaux/facebook.png" alt=""></a>
+                </li>
                 <li class="socials-icons__list-elem"><a class="socials-icons-link" href="#"><img
-                                class="socials-icons-img src="" alt=""></a></li>
+                                class="socials-icons-img" src="<?php echo $niveau ?>image_accueil/accueil_table/reseau_sociaux/youtube.png" alt=""></a>
+                </li>
                 <li class="socials-icons__list-elem"><a class="socials-icons-link" href="#"><img
-                                class="socials-icons-img src="" alt=""></a></li>
+                                class="socials-icons-img" src="<?php echo $niveau ?>image_accueil/accueil_table/reseau_sociaux/twitter.png" alt=""></a>
+                </li>
             </ul>
         </div>
     </div>
@@ -38,6 +44,8 @@
             <a href="mailto: info@quebecoff.org">info@quebecoff.org</a>
             <a href="mailto: media@quebecoff.org">media@quebecoff.org</a>
         </div>
+        </div>
+        </div>
         <small class="copyrigth">
             <p>Une réalisation de Isaac Dubé, Clodiane Charette et Rosalie Roy © Tous droits réservés. Travail scolaire
                 réalisé en mars 2022.
@@ -45,3 +53,4 @@
         </small>
     </div>
 </footer>
+<link rel="stylesheet" href="<?php echo $niveau ?>scss/style-isaac.css">

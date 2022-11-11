@@ -1,4 +1,4 @@
-//*** Menu hamburger ***//
+
 
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -17,25 +17,53 @@ hamburger.querySelectorAll('nav--principale__link').forEach(n => n.addEventListe
 
 //*** crousselle ***//
 
-let refImage = document.getElementById('imageCarousel');
+let refDivCarousel = document.getElementById('image_carousel');
 
 
 function changerDePhoto(intPhoto) {
  console.log(intPhoto);
  switch (intPhoto) {
   case 1:
-   refImage.src = '../../accueil_table/DiamondRings_DSC0731.jpg';
-   refImage
+   refDivCarousel.innerHTML = ' <picture class="picture__entete "> ' + 
+   ' <source media="(max-width: 780px) ' +
+     ' srcset="<?php echo $niveau ?>image_accueil/mobile_header/DiamondRings_1x_w390.jpg 1x, <?php echo $niveau ?>image_accueil/mobile_header/DiamondRings_2x_w780.jpg 2x">' +
+' <source media="(min-width: 781px)" srcset="<?php echo $niveau ?>image_accueil/accueil_table/DiamondRings.jpg 1x, <?php echo $niveau ?>image_accueil/accueil_table/DiamondRings_DSC0731_2x_w3840.jpg 2x">' +
+
+'<img class="imageCarousel" src="image_accueil/accueil_table/DiamondRings_DSC0731_2x_w3840.jpg" alt="Image en-tête"> ' +
+ '</picture>'
+
    break;
   case 2:
-   refImage.src = '../../accueil_table/3DKids_DSC0179.jpg';
+    refDivCarousel.innerHTML =     ' <picture class="picture__entete "> ' + 
+    ' <source media="(max-width: 780px) ' +
+      ' srcset="<?php echo $niveau ?>image_accueil/mobile_header/3DKids_DSC0179_1x_w390.jpg 1x, <?php echo $niveau ?>image_accueil/mobile_header/3DKids_DSC0179_2x_w780.jpg 2x">' +
+ 
+ ' <source media="(min-width: 781px)" srcset="<?php echo $niveau ?>image_accueil/accueil_table/3DKids_DSC0179.jpg 1x, <?php echo $niveau ?>image_accueil/accueil_table/accueil_table/3DKids_DSC0179.jpg_2x_w3840.jpg 2x">' +
+ 
+ '<img class="imageCarousel" src="image_accueil/accueil_table/DiamondRings_DSC0731_2x_w3840.jpg" alt="Image en-tête"> ' +
+  '</picture>'
    break;
   case 3:
-   refImage.src = '../../accueil_table/DiamondRings_DSC0860.jpg';
+    refDivCarousel.innerHTML =     ' <picture class="picture__entete "> ' + 
+    ' <source media="(max-width: 780px) ' +
+      ' srcset="<?php echo $niveau ?>image_accueil/mobile_header/DiamondRings_DSC0860_1x_w390.jpg 1x, <?php echo $niveau ?>image_accueil/mobile_header/DiamondRings_DSC0860_2x_w780.jpg 2x">' +
+ 
+ ' <source media="(min-width: 781px)" srcset="<?php echo $niveau ?>image_accueil/accueil_table/DiamondRings_DSC0860.jpg 1x, <?php echo $niveau ?>image_accueil/accueil_table/accueil_table/DiamondRings_DSC0860.jpg_2x_w3840.jpg 2x">' +
+ 
+ '<img class="imageCarousel" src="image_accueil/accueil_table/DiamondRings_DSC0860_2x_w3840.jpg" alt="Image en-tête"> ' +
+  '</picture>'
    break;
 
   default:
-   refImage.src = '../../accueil_table/DiamondRings_DSC0731.jpg';
+    refDivCarousel.innerHTML =     ' <picture class="picture__entete "> ' + 
+    ' <source media="(max-width: 780px) ' +
+      ' srcset="<?php echo $niveau ?>image_accueil/mobile_header/DiamondRings_1x_w390.jpg 1x, <?php echo $niveau ?>image_accueil/mobile_header/DiamondRings_2x_w780.jpg 2x">' +
+ 
+ ' <source media="(min-width: 781px)" srcset="<?php echo $niveau ?>image_accueil/accueil_table/DiamondRings.jpg 1x, <?php echo $niveau ?>image_accueil/accueil_table/DiamondRings_DSC0731_2x_w3840.jpg 2x">' +
+ 
+ '<img class="imageCarousel" src="image_accueil/accueil_table/DiamondRings_DSC0731_2x_w3840.jpg" alt="Image en-tête"> ' +
+  '</picture>'
+ 
  }
 
 }
