@@ -1,0 +1,137 @@
+/**
+* imports
+* Menu
+* Grille
+* Mise en page
+** Temporaire
+** Général
+** Tri et filtres
+** Contrôles de page
+** Liens artistes
+*/
+
+/* Normalize
+   ========================================================================== */
+//@import "normalize";
+
+/* Utilitaires
+   ========================================================================== */
+@import "utilitaire/_variables";
+
+/* Charte typographique
+   ========================================================================== */
+@import "base/_typo";
+
+
+/* Mise en page
+   ========================================================================== */
+
+/** Temporaire
+    ========================================================================== */
+.nav__link{
+  color: $blanc;
+}
+
+/** Général
+    ========================================================================== */
+body{
+  background-color: $charcoal;
+}
+h1,
+.artiste_info_nom,
+.artiste_info_style,
+.indicateur-page{
+  color: $blanc;
+}
+
+/** Tri et filtres
+    ========================================================================== */
+.media > .section-tri { grid-area: tri; }
+.media > .section-filtre { grid-area: filtre; }
+.media > .appliquer { grid-area: app; }
+.media > .reinitialiser { grid-area: reini; }
+
+.h2_tri{
+  color: $charcoal;
+}
+.tri-filtres {
+  background-color: $bleu;
+  box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4);
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 30% 60%;
+  grid-template-areas:
+    "tri filtre"
+    "app reini";
+}
+.bouton{
+  max-width: 100px;
+  margin: 10px 5px;
+}
+
+/** Contrôles de page
+    ========================================================================== */
+.page.inactif{
+  color: $mauve;
+  text-shadow: -4px -4px 15px $mauve, 4px 4px 15px $mauve;
+}
+.precedente.inactif,
+.suivante.inactif{
+  color: #A4A4A4;
+}
+.actif:link,
+.actif:visited{
+  color: $blanc;
+}
+.actif:hover,
+.actif:active{
+  color: $jaune;
+  text-shadow: -4px -4px 15px rgba($jaune, 0.5), 4px 4px 15px rgba($jaune, 0.5);
+}
+
+/** Liens artistes
+    ========================================================================== */
+.liste-artistes{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.artiste_img{
+  order: 1;
+}
+.artistes{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.artiste_info_nom,
+.artiste_info_style{
+  background-color: $charcoal;
+  max-width: 245px;
+}
+.artiste_info{
+  margin-left: 20px;
+}
+@media(min-width:800px){
+  .liste-artistes{
+    display: flex;
+    flex-direction: column;
+  }
+  .artistes.impair{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+  }
+  .artistes.pair{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+  }
+  .artiste_img{
+    order: 0;
+  }
+}
+

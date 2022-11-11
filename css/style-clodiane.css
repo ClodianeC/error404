@@ -1,0 +1,343 @@
+@charset "UTF-8";
+/**
+* imports
+* Menu
+* Grille
+* Mise en page
+** Temporaire
+** Général
+** Tri et filtres
+** Contrôles de page
+** Liens artistes
+*/
+/* Normalize
+   ========================================================================== */
+/* Utilitaires
+   ========================================================================== */
+/*** Clearfix ***/
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*** Harmoniser le modèle de boîte avec Box-Sizing ***/
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Images fluides */
+img {
+  max-width: 100%;
+}
+
+/*** Styles de base ***/
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+}
+
+abbr[title]:hover {
+  background-color: rgba(244, 161, 71, 0.25);
+}
+
+/** Accessibilité
+  * Pour cacher visuellement tout en gardant accessible un contenu:
+  * screen-reader-only ou visuallyhidden **/
+.screen-reader-only,
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.screen-reader-only.focusable:active,
+.screen-reader-only.focusable:focus,
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* Charte typographique
+   ========================================================================== */
+/**
+ * Typographie responsive (Mobile First)
+   ========================================================================
+ * Les valeurs de taille de police suggérées ici sont à titre indicatif.
+ * À ajuster selon la direction visuelle et le choix de polices de caractères.
+ *
+ * @author Prénom Nom courriel
+ *
+ * TABLE DES MATIÈRES
+ * Polices
+ * Base décimale
+ * Hiérarchie responsive
+ *
+ *
+ * Doc des points de rupture :
+ * ==========================================================================
+ * Écran étroit : de 0 à 599px
+ * point de rupture: 600px
+ *
+ * Écran moyen : de 600 à 799px
+ * point de rupture: 800px
+ *
+ * Écran large : 800px et +
+ */
+/* Polices */
+/* Selon le projet, il est souvent préférable d'utiliser le lien @import des Google Fonts
+ * plutôt que de servir directement les polices de caractères à l'aide d'instructions @font-face
+ * et d'un dossier de polices dans la structure de répertoires.
+ * La méthode ci-dessous vise à offrir dans l'ordre de priorité les 3 formats possibles pour
+ * assurer la meilleure compatibilité.
+ */
+@font-face {
+  font-family: RubikDirt;
+  src: url(../../font/RubikDirt-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: Alata;
+  src: url(../../font/alata-regular.ttf) format("truetype");
+}
+h1,
+.h1 {
+  font-family: RubikDirt, sans-serif;
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-family: Alata, sans-serif;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Base décimale */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* 16px pour toutes les largeurs d'écran */
+  font-size: 1.6rem;
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+}
+
+@media (min-width: 600px) {
+  body {
+    line-height: 1.5;
+  }
+}
+@media (min-width: 800px) {
+  body {
+    line-height: 1.75;
+  }
+}
+/* Hiérarchie responsive : plus proche = plus petit  &  plus loin = plus grand */
+h1,
+.h1 { /* = 40px */
+  font-size: 4rem;
+}
+
+@media (min-width: 800px) {
+  h1,
+.h1 { /* = 50px */
+    font-size: 5rem;
+  }
+}
+h2,
+.h2 { /* = 30px */
+  font-size: 3rem;
+}
+
+@media (min-width: 800px) {
+  h2,
+.h2 { /* = 35px */
+    font-size: 3.5rem;
+  }
+}
+h3,
+.h3 { /* = 18px */
+  font-size: 1.8rem;
+}
+
+@media (min-width: 600px) {
+  h3,
+.h3 { /* = 24px */
+    font-size: 2.4rem;
+  }
+}
+@media (min-width: 800px) {
+  h3,
+.h3 { /* = 30px */
+    font-size: 3rem;
+  }
+}
+h4,
+.h4 { /* = 16px */
+  font-size: 1.6rem;
+}
+
+@media (min-width: 600px) {
+  h4,
+.h4 { /* = 18px */
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 800px) {
+  h4,
+.h4 { /* = 22px */
+    font-size: 2.2rem;
+  }
+}
+/* Mise en page
+   ========================================================================== */
+/** Temporaire
+    ========================================================================== */
+.nav__link {
+  color: #FFFFFF;
+}
+
+/** Général
+    ========================================================================== */
+body {
+  background-color: #242526;
+}
+
+h1,
+.artiste_info_nom,
+.artiste_info_style,
+.indicateur-page {
+  color: #FFFFFF;
+}
+
+/** Tri et filtres
+    ========================================================================== */
+.media > .section-tri {
+  grid-area: tri;
+}
+
+.media > .section-filtre {
+  grid-area: filtre;
+}
+
+.media > .appliquer {
+  grid-area: app;
+}
+
+.media > .reinitialiser {
+  grid-area: reini;
+}
+
+.h2_tri {
+  color: #242526;
+}
+
+.tri-filtres {
+  background-color: #46D3D3;
+  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4);
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 30% 60%;
+  grid-template-areas: "tri filtre" "app reini";
+}
+
+.bouton {
+  max-width: 100px;
+  margin: 10px 5px;
+}
+
+/** Contrôles de page
+    ========================================================================== */
+.page.inactif {
+  color: #AC3AB6;
+  text-shadow: -4px -4px 15px #AC3AB6, 4px 4px 15px #AC3AB6;
+}
+
+.precedente.inactif,
+.suivante.inactif {
+  color: #A4A4A4;
+}
+
+.actif:link,
+.actif:visited {
+  color: #FFFFFF;
+}
+
+.actif:hover,
+.actif:active {
+  color: #FFE607;
+  text-shadow: -4px -4px 15px rgba(255, 230, 7, 0.5), 4px 4px 15px rgba(255, 230, 7, 0.5);
+}
+
+/** Liens artistes
+    ========================================================================== */
+.liste-artistes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.artiste_img {
+  order: 1;
+}
+
+.artistes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.artiste_info_nom,
+.artiste_info_style {
+  background-color: #242526;
+  max-width: 245px;
+}
+
+.artiste_info {
+  margin-left: 20px;
+}
+
+@media (min-width: 800px) {
+  .liste-artistes {
+    display: flex;
+    flex-direction: column;
+  }
+  .artistes.impair {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+  }
+  .artistes.pair {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+  }
+  .artiste_img {
+    order: 0;
+  }
+}
+
+/*# sourceMappingURL=style-clodiane.css.map */

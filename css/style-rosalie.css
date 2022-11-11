@@ -1,0 +1,70 @@
+/**
+ * @author Rosalie Roy - 2133488@csfoy.ca
+ *
+ * TABLE DES MATIERES
+ ** Importation de polices
+ **
+ */
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+body {
+  font-family: Helvetica;
+  font-size: 16px;
+  background-color: #242526;
+  color: white;
+}
+body a {
+  color: white;
+  text-decoration: none;
+}
+body h2 {
+  font-size: 40px;
+  font-family: "Alata", sans-serif;
+  text-transform: uppercase;
+}
+body div.artistesSugDiv {
+  background-color: #242526;
+  filter: drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5));
+}
+body div.artistesSugDiv section.artistesSug {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
+  list-style-type: none;
+}
+body main {
+  display: flex;
+}
+body main div.partieGauche {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main div.partieGauche h1 {
+  font-size: 50px;
+  font-family: "Rubik Dirt", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+body main div.partieGauche div.fondFonce {
+  background-color: #242526;
+}
+body main div.partieGauche div.fondFonce h3 {
+  font-size: 32px;
+  font-family: "Alata", sans-serif;
+  text-transform: uppercase;
+}
+body main div.partieDroite {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main div.partieDroite div.imagesArtiste {
+  display: flex;
+}
+
+/*# sourceMappingURL=style-rosalie.css.map */
