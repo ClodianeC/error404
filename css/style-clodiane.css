@@ -7,11 +7,127 @@
 ** Temporaire
 ** Général
 ** Tri et filtres
+*** Boutons
 ** Contrôles de page
 ** Liens artistes
+** Liens artistes vedettes
 */
 /* Normalize
    ========================================================================== */
+/* Charte typographique
+   ========================================================================== */
+/**
+ * Typographie responsive (Mobile First)
+   ========================================================================
+ *
+ * @author Clodiane Charette 2164515@csfoy.ca
+ *
+ * TABLE DES MATIÈRES
+ * Polices
+ * Base décimale
+ * Hiérarchie responsive
+ *
+ *
+ * Doc des points de rupture :
+ * ==========================================================================
+ * Écran étroit : de 0 à 800px
+ * point de rupture: 800px
+ *
+ * Écran large : 801px et +
+ */
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+h1,
+.h1 {
+  font-family: "RubikDirt", sans-serif;
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-family: "Alata", sans-serif;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+}
+
+/* Base décimale */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* 16px pour toutes les largeurs d'écran */
+  font-size: 1.6rem;
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+}
+
+@media (min-width: 600px) {
+  body {
+    line-height: 1.5;
+  }
+}
+@media (min-width: 800px) {
+  body {
+    line-height: 1.75;
+  }
+}
+/* Hiérarchie responsive : plus proche = plus petit  &  plus loin = plus grand */
+h1,
+.h1 { /* = 40px */
+  font-size: 4rem;
+}
+
+@media (min-width: 800px) {
+  h1,
+.h1 { /* = 50px */
+    font-size: 5rem;
+  }
+}
+h2,
+.h2 { /* = 35px */
+  font-size: 3.5rem;
+}
+
+@media (min-width: 800px) {
+  h2,
+.h2 { /* = 40px */
+    font-size: 4rem;
+  }
+}
+h3,
+.h3 { /* = 30px */
+  font-size: 3rem;
+}
+
+@media (min-width: 800px) {
+  h3,
+.h3 { /* = 35px */
+    font-size: 3.5rem;
+  }
+}
+h4,
+.h4 { /* = 16px */
+  font-size: 1.6rem;
+}
+
+@media (min-width: 600px) {
+  h4,
+.h4 { /* = 18px */
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 800px) {
+  h4,
+.h4 { /* = 22px */
+    font-size: 2.2rem;
+  }
+}
 /* Utilitaires
    ========================================================================== */
 /*** Clearfix ***/
@@ -72,144 +188,6 @@ abbr[title]:hover {
   width: auto;
 }
 
-/* Charte typographique
-   ========================================================================== */
-/**
- * Typographie responsive (Mobile First)
-   ========================================================================
- * Les valeurs de taille de police suggérées ici sont à titre indicatif.
- * À ajuster selon la direction visuelle et le choix de polices de caractères.
- *
- * @author Prénom Nom courriel
- *
- * TABLE DES MATIÈRES
- * Polices
- * Base décimale
- * Hiérarchie responsive
- *
- *
- * Doc des points de rupture :
- * ==========================================================================
- * Écran étroit : de 0 à 599px
- * point de rupture: 600px
- *
- * Écran moyen : de 600 à 799px
- * point de rupture: 800px
- *
- * Écran large : 800px et +
- */
-/* Polices */
-/* Selon le projet, il est souvent préférable d'utiliser le lien @import des Google Fonts
- * plutôt que de servir directement les polices de caractères à l'aide d'instructions @font-face
- * et d'un dossier de polices dans la structure de répertoires.
- * La méthode ci-dessous vise à offrir dans l'ordre de priorité les 3 formats possibles pour
- * assurer la meilleure compatibilité.
- */
-@font-face {
-  font-family: RubikDirt;
-  src: url(../../font/RubikDirt-Regular.ttf) format("truetype");
-}
-@font-face {
-  font-family: Alata;
-  src: url(../../font/alata-regular.ttf) format("truetype");
-}
-h1,
-.h1 {
-  font-family: RubikDirt, sans-serif;
-}
-
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4 {
-  font-family: Alata, sans-serif;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* Base décimale */
-html {
-  font-size: 62.5%;
-}
-
-body {
-  /* 16px pour toutes les largeurs d'écran */
-  font-size: 1.6rem;
-  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
-  line-height: 1.375;
-}
-
-@media (min-width: 600px) {
-  body {
-    line-height: 1.5;
-  }
-}
-@media (min-width: 800px) {
-  body {
-    line-height: 1.75;
-  }
-}
-/* Hiérarchie responsive : plus proche = plus petit  &  plus loin = plus grand */
-h1,
-.h1 { /* = 40px */
-  font-size: 4rem;
-}
-
-@media (min-width: 800px) {
-  h1,
-.h1 { /* = 50px */
-    font-size: 5rem;
-  }
-}
-h2,
-.h2 { /* = 30px */
-  font-size: 3rem;
-}
-
-@media (min-width: 800px) {
-  h2,
-.h2 { /* = 35px */
-    font-size: 3.5rem;
-  }
-}
-h3,
-.h3 { /* = 18px */
-  font-size: 1.8rem;
-}
-
-@media (min-width: 600px) {
-  h3,
-.h3 { /* = 24px */
-    font-size: 2.4rem;
-  }
-}
-@media (min-width: 800px) {
-  h3,
-.h3 { /* = 30px */
-    font-size: 3rem;
-  }
-}
-h4,
-.h4 { /* = 16px */
-  font-size: 1.6rem;
-}
-
-@media (min-width: 600px) {
-  h4,
-.h4 { /* = 18px */
-    font-size: 1.8rem;
-  }
-}
-@media (min-width: 800px) {
-  h4,
-.h4 { /* = 22px */
-    font-size: 2.2rem;
-  }
-}
 /* Mise en page
    ========================================================================== */
 /** Temporaire
@@ -222,9 +200,73 @@ h4,
     ========================================================================== */
 body {
   background-color: #242526;
+  background-image: url("../images/fond/neons-mobile.png");
+  background-size: 100%;
+}
+
+@media (min-width: 800px) {
+  body {
+    background-image: url("../images/fond/neons-table.png");
+    background-size: 100%;
+  }
+}
+h1 {
+  background-color: #242526;
+  display: inline-block;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.titre {
+  text-align: center;
+}
+
+.h1_deco {
+  padding: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.h1_deco:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -5px;
+  right: 25px;
+  top: 30px;
+  bottom: 60px;
+  border: 3px solid #FFE607;
+  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+}
+
+.h1_deco:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 25px;
+  right: -10px;
+  top: 60px;
+  bottom: 30px;
+  border: 3px solid #46D3D3;
+  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+}
+
+h2.titrePage,
+h2.titreVedette {
+  color: #FFFFFF;
+  background-color: #242526;
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border: 3px solid #AC3AB6;
+  border-radius: 4px;
+  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
 }
 
 h1,
+.desole,
 .artiste_info_nom,
 .artiste_info_style,
 .indicateur-page {
@@ -251,20 +293,54 @@ h1,
 
 .h2_tri {
   color: #242526;
+  margin-top: 0;
 }
 
 .tri-filtres {
   background-color: #46D3D3;
+  background-size: 200%;
   box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4);
+  padding: 3% 10%;
   display: grid;
   grid-column-gap: 20px;
   grid-template-columns: 30% 60%;
   grid-template-areas: "tri filtre" "app reini";
 }
 
+.filtre_element {
+  list-style: none;
+  display: inline-block;
+  width: 12rem;
+}
+
+.checkbox-style {
+  accent-color: #242526;
+}
+
+/*** Boutons
+    ========================================================================== */
 .bouton {
   max-width: 100px;
-  margin: 10px 5px;
+  margin: 30px 5px 5px 5px;
+  padding: 0px;
+  background-color: #242526;
+  border: none;
+  color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.bouton:hover {
+  color: #46D3D3;
+}
+
+.bouton:active {
+  box-shadow: inset 0px -3px 5px 6px rgba(0, 0, 0, 0.5);
+  width: 105%;
+}
+
+.bouton:hover p,
+.bouton:active p {
+  text-shadow: -4px -4px 15px #46D3D3, 4px 4px 15px #46D3D3;
 }
 
 /** Contrôles de page
@@ -290,53 +366,299 @@ h1,
   text-shadow: -4px -4px 15px rgba(255, 230, 7, 0.5), 4px 4px 15px rgba(255, 230, 7, 0.5);
 }
 
+.indicateur-page {
+  text-align: center;
+  margin: 5px;
+}
+
+.controle-page {
+  display: inline-block;
+  background-color: #242526;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.controles_div_total {
+  text-align: center;
+}
+
+.controles_deco {
+  padding: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.controles_deco:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: -5px;
+  right: 50px;
+  top: 0px;
+  bottom: 35px;
+  border: 3px solid #FFE607;
+  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+}
+
+.controles_deco:after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 25px;
+  right: -10px;
+  top: 35px;
+  bottom: 0px;
+  border: 3px solid #46D3D3;
+  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+}
+
 /** Liens artistes
     ========================================================================== */
 .liste-artistes {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 75%;
+  margin: 100px auto -50px auto;
 }
 
 .artiste_img {
   order: 1;
+  position: relative;
+  z-index: 1;
+  width: 260px;
+}
+
+.artistes_deco {
+  padding: 15px;
+  display: inline-block;
+  position: relative;
+  width: 290px;
+}
+
+.artistes_deco:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: 25px;
+  top: -5px;
+  bottom: 30px;
+}
+
+.pair .artistes_deco:before {
+  border: 3px solid #46D3D3;
+  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+  z-index: 0;
+}
+
+.impair .artistes_deco:before {
+  border: 3px solid #AC3AB6;
+  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+  z-index: 0;
 }
 
 .artistes {
   list-style: none;
   display: flex;
   flex-direction: column;
+  margin-top: -30px;
 }
 
 .artiste_info_nom,
 .artiste_info_style {
-  background-color: #242526;
   max-width: 245px;
 }
 
+h3.longTitre {
+  font-size: 170%;
+}
+
 .artiste_info {
-  margin-left: 20px;
+  background-color: #242526;
+  max-width: 260px;
+  margin-left: 30px;
+  padding: 180px 20px 10px 20px;
+  position: relative;
+  z-index: 0;
+  top: -230px;
+}
+
+.pair .artiste_info {
+  border: 3px solid #AC3AB6;
+  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+}
+
+.impair .artiste_info {
+  border: 3px solid #FFE607;
+  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+}
+
+.artistes_lien:link,
+.artistes_lien:visited {
+  text-decoration: none;
+}
+
+.artistes_lien:hover,
+.artistes_lien:active {
+  text-decoration: underline #FFFFFF;
 }
 
 @media (min-width: 800px) {
+  .artiste_info {
+    min-width: 200px;
+    margin-left: 0;
+  }
   .liste-artistes {
     display: flex;
     flex-direction: column;
+    margin: 50px auto;
   }
-  .artistes.impair {
+  .artistes {
     list-style: none;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .artistes_lien.impair {
     margin-right: auto;
   }
-  .artistes.pair {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
+  .artistes_lien.pair {
     margin-left: auto;
   }
   .artiste_img {
     order: 0;
+  }
+  .artiste_info {
+    min-width: 300px;
+    height: 240px;
+    padding: 10px 20px 5px 10px;
+    position: relative;
+    padding-left: 50px;
+    left: -30px;
+    z-index: 0;
+    top: 0;
+  }
+  .pair .artiste_info {
+    border: 3px solid #AC3AB6;
+    box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+  }
+  .impair .artiste_info {
+    border: 3px solid #FFE607;
+    box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+  }
+}
+/** Liens artistes vedettes
+    ========================================================================== */
+h3.tresLongTitre {
+  font-size: 120%;
+  line-height: 125%;
+}
+
+.liste_artistes-vedettes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 75%;
+  margin: 50px auto;
+}
+
+.artistes-vedettes_lien:link,
+.artistes-vedettes_lien:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.artistes-vedettes_lien:hover,
+.artistes-vedettes_lien:active {
+  color: #FFFFFF;
+  text-decoration: underline #FFFFFF;
+}
+
+.artistes-vedettes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.artiste-vedettes_info_nom {
+  height: 70px;
+  line-height: 40px;
+  margin: 15px 0;
+}
+
+.artiste-vedettes_img img {
+  max-width: 220px;
+}
+
+.artiste-vedettes_info_style {
+  margin: 0;
+}
+
+.artiste-vedettes_info {
+  text-align: center;
+  background-color: #242526;
+  width: 200px;
+  color: #FFFFFF;
+  padding: 70px 20px 15px 10px;
+  position: relative;
+  left: -40px;
+  top: -100px;
+  z-index: 0;
+}
+
+.pair .artiste-vedettes_info {
+  border: 3px solid #AC3AB6;
+  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
+}
+
+.impair .artiste-vedettes_info {
+  border: 3px solid #46D3D3;
+  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+}
+
+.artiste-vedettes_img {
+  position: relative;
+  z-index: 1;
+}
+
+.artistes-vedettes_deco {
+  padding: 15px;
+  display: inline-block;
+  position: relative;
+  width: 290px;
+}
+
+.artistes-vedettes_deco:before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  top: -5px;
+  bottom: 30px;
+}
+
+.pair .artistes-vedettes_deco:before {
+  border: 3px solid #46D3D3;
+  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
+  z-index: 0;
+}
+
+.impair .artistes-vedettes_deco:before {
+  border: 3px solid #FFE607;
+  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
+  z-index: 0;
+}
+
+@media (min-width: 800px) {
+  .liste_artistes-vedettes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 35px auto 85px auto;
+    padding: 0;
   }
 }
 

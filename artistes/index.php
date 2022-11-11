@@ -110,14 +110,44 @@ for($intCptStyle = 0; $rangee=$pdosResultat->fetch();$intCptStyle++){
     $arr_style[$intCptStyle]["nom_style"]=$rangee["nom_style"];
 }
 
+//Requete artistes complets
 $str_requeteArtisteComplet = "SELECT id_artiste, nom_artiste FROM t_artiste";
-$pdosResultat = $pdoConnexion->query($str_requeteArtisteComplet);
+$pdosResultatC = $pdoConnexion->query($str_requeteArtisteComplet);
 $arr_artisteComplet = array();
 
-for($intCptStyle = 0; $rangee=$pdosResultat->fetch();$intCptStyle++){
-    $arr_artisteComplet[$intCptStyle]["id_artiste"]=$rangee["id_artiste"];
-    $arr_artisteComplet[$intCptStyle]["nom_artiste"]=$rangee["nom_artiste"];
+for($intCptArtistesC = 0; $rangee=$pdosResultatC->fetch();$intCptArtistesC++){
+    $arr_artisteComplet[$intCptArtistesC]["id_artiste"]=$rangee["id_artiste"];
+    $arr_artisteComplet[$intCptArtistesC]["nom_artiste"]=$rangee["nom_artiste"];
+
+    //Établissement de la deuxième requête (pour les styles liés à l'artiste)
+    $strRequeteStyleV="SELECT nom_style FROM t_style INNER JOIN ti_style_artiste ON ti_style_artiste.id_style=t_style.id_style WHERE id_artiste=".$rangee['id_artiste'];
+
+    //Initialisation de PDOStatement avec la nouvelle requête
+    $pdosSousResultatV = $pdoConnexion->prepare($strRequeteStyleV);
+    $pdosSousResultatV->execute();
+
+    $ligneStyleV = $pdosSousResultatV->fetch();
+    $strStylesV="";
+
+    //Extraction des données de la BD (pour les styles)
+    for($intCptStyleV=0;$intCptStyleV<$pdosSousResultatV->rowCount();$intCptStyleV++){
+        if($strStylesV != ""){
+            $strStylesV = $strStylesV . ", ";
+        }
+        $strStylesV = $strStylesV . $ligneStyleV['nom_style'];
+        $ligneStyleV = $pdosSousResultatV->fetch();
+    }
+
+    //Libération de la requête Styles
+    $pdosSousResultatV->closeCursor();
+    //Création d'une section de tableau pour style
+    $arr_artisteComplet[$intCptArtistesC]['style_artiste'] = $strStylesV;
+
+//Nouvel artiste
+    $ligne=$pdosResultat->fetch();
 }
+//Libération de la requête Artistes complets
+$pdosResultat->closeCursor();
 
 $arr_randomArtisteSugg = [-1,-1,-1];
 for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $intCptRand++){
@@ -139,90 +169,124 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Festival OFF - Liste des artistes</title>
     <?php include($niveau . 'inc/fragments/head-links.html'); ?>
-    <link rel="stylesheet" href="<?php echo $niveau ?>/css/style-clodiane.css">
+    <link rel="stylesheet" href="<?php echo $niveau ?>css/style-clodiane.css">
 </head>
 
-<body>
+<div>
 <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
 
-<h1>Artistes
-    <?php
-    if(isset($_GET["id_style"])){
-    echo " du style ".$arr_style[($_GET["id_style"]-1)]["nom_style"];
-    }
-    ?></h1>
-
-<div class="tri-filtres">
+<form class="tri-filtres">
     <div class="section-tri">
         <h2 class="h2_tri">Trier :</h2>
-        <form class="tri_formulaire">
+        <div class="tri_formulaire">
             <select name="tri" id="tri" class="tri_liste-deroulante">
                 <option class="tri_choix" value="Par défault">Par défaut</option>
                 <option class="tri_choix" value="A-Z">A-Z</option>
                 <option class="tri_choix" value="Z-A">Z-A</option>
                 <option class="tri_choix" value="Par style">Par style</option>
             </select>
-        </form>
+        </div>
     </div>
     <div class="section-filtre">
-        <h2 class="h2_tri">Filtrer par styles</h2>
-        <form class="filtre_formulaire">
-            <input class="checkbox-style" type="checkbox" id="burlesque" name="style-filtre" value="burlesque">
-            <label class="label_checkbox-style" for="burlesque">Burlesque</label>
-            <input class="checkbox-style" type="checkbox" id="electro" name="style-filtre" value="electro">
-            <label class="label_checkbox-style" for="electro">Électro</label>
-            <input class="checkbox-style" type="checkbox" id="trash" name="style-filtre" value="trash">
-            <label class="label_checkbox-style" for="trash">Trash</label>
-            <input class="checkbox-style" type="checkbox" id="punk" name="style-filtre" value="punk">
-            <label class="label_checkbox-style" for="punk">Punk</label>
-            <input class="checkbox-style" type="checkbox" id="exprerimental" name="style-filtre" value="exprerimental">
-            <label class="label_checkbox-style" for="exprerimental">Exprérimental</label>
-            <input class="checkbox-style" type="checkbox" id="humour" name="style-filtre" value="humour">
-            <label class="label_checkbox-style" for="humour">Humour</label>
-            <input class="checkbox-style" type="checkbox" id="raggae" name="style-filtre" value="raggae">
-            <label class="label_checkbox-style" for="raggae">Raggae</label>
-            <input class="checkbox-style" type="checkbox" id="hip-hop" name="style-filtre" value="hip-hop">
-            <label class="label_checkbox-style" for="hip-hop">Hip-Hop</label>
-            <input class="checkbox-style" type="checkbox" id="rap" name="style-filtre" value="rap">
-            <label class="label_checkbox-style" for="rap">Rap</label>
-            <input class="checkbox-style" type="checkbox" id="folk" name="style-filtre" value="folk">
-            <label class="label_checkbox-style" for="folk">Folk</label>
-            <input class="checkbox-style" type="checkbox" id="country" name="style-filtre" value="country">
-            <label class="label_checkbox-style" for="country">Country</label>
-            <input class="checkbox-style" type="checkbox" id="franco" name="style-filtre" value="franco">
-            <label class="label_checkbox-style" for="franco">Franco</label>
-            <input class="checkbox-style" type="checkbox" id="indie" name="style-filtre" value="indie">
-            <label class="label_checkbox-style" for="indie">Indie</label>
-            <input class="checkbox-style" type="checkbox" id="pop" name="style-filtre" value="pop">
-            <label class="label_checkbox-style" for="pop">Pop</label>
-        </form>
+        <h2 class="h2_tri">Filtrer par styles :</h2>
+        <div class="filtre_formulaire">
+            <?php
+            for($intCptFiltre = 0; $intCptFiltre < count($arr_style); $intCptFiltre++){
+                $str_style = $arr_style[$intCptFiltre]["nom_style"];
+                $id_style = $arr_style[$intCptFiltre]["id_style"];
+                echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='style-filtre' value='".$id_style."'>";
+                echo "<label class='label_checkbox-style'for='".$str_style."'>$str_style</label></li>";
+            }
+            ?>
+        </div>
     </div>
 
-    <button class="bouton appliquer"><p>Appliquer</p></button>
-    <button class="bouton reinitialiser"><p>Réinitialiser</p></button>
+    <button type="submit" class="bouton appliquer"><p>Appliquer</p></button>
+    <button type="reset" class="bouton reinitialiser"><p>Réinitialiser</p></button>
+</form>
+<div class="titre">
+    <div class="h1_deco">
+        <h1 class="h1">Artistes
+            <?php
+            if(isset($_GET["id_style"])){
+                echo " du style ".$arr_style[($_GET["id_style"]-1)]["nom_style"];
+            }
+            ?>
+        </h1>
+    </div>
 </div>
+    <h2 class="h2 titrePage">Page <?php echo $id_page+1?></h2>
 <ul class="liste-artistes">
     <?php
     for($intCpt=0;$intCpt<count($arr_artiste);$intCpt++){
         $str_classArtistePair = "pair";
+        $str_classLongTitre = "";
         if($intCpt%2==0){
             $str_classArtistePair = "impair";
         }
+        if(strlen($arr_artiste[$intCpt]["nom_artiste"])>=15){
+            $str_classLongTitre = "longTitre";
+        }
+        $str_queryArtiste = "./fiche/index.php?id_artiste=".$arr_artiste[$intCpt]['id_artiste'];
     ?>
-    <li class="artistes <?php echo $str_classArtistePair?>">
-        <picture class="artiste_img">
-            <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
-        </picture>
-        <div class="artiste_info">
-            <h2 class="artiste_info_nom"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h2>
-            <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
-        </div>
-    </li>
+    <a class="artistes_lien <?php echo $str_classArtistePair?>" href="<?php echo $str_queryArtiste ?>">
+        <li class="artistes <?php echo $str_classArtistePair?>">
+            <div class="artistes_deco">
+                <picture class="artiste_img">
+                    <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
+                </picture>
+            </div>
+            <div class="artiste_info">
+                <h3 class="artiste_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artiste[$intCpt]["nom_artiste"]?></h3>
+                <p class="artiste_info_style"><?php echo $arr_artiste[$intCpt]["style_artiste"]?></p>
+            </div>
+        </li>
+    </a>
     <?php
     }
     ?>
 </ul>
+    <h2 class="h2 titreVedette">En vedette</h2>
+
 <?php
+echo "<ul class='liste_artistes-vedettes'>";
+    for($intCptVedette = 0; $intCptVedette<3; $intCptVedette++){
+        if($arr_randomArtisteSugg[$intCptVedette] != -1){
+            $int_randFinal = $arr_randomArtisteSugg[$intCptVedette];
+            $str_queryVedette = "./fiche/index.php?id_artiste=".$arr_artisteComplet[$int_randFinal]["id_artiste"];
+            $str_classArtistePair = "pair";
+            $str_classLongTitre = "";
+            if($intCptVedette%2==0){
+                $str_classArtistePair = "impair";
+            }
+            if(strlen($arr_artisteComplet[$int_randFinal]["nom_artiste"])>=11){
+                $str_classLongTitre = "longTitre";
+                if(strlen($arr_artisteComplet[$int_randFinal]["nom_artiste"])>=15){
+                    $str_classLongTitre = "tresLongTitre";
+                }
+
+            }
+            ?>
+            <a class="artistes-vedettes_lien" href="<?php echo $str_queryVedette ?>">
+                <li class="artistes-vedettes <?php echo $str_classArtistePair?>">
+                    <div class="artistes-vedettes_deco">
+                        <picture class="artiste-vedettes_img">
+                            <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artisteComplet[$int_randFinal]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artisteComplet[$int_randFinal]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artisteComplet[$int_randFinal]['id_artiste']."_w520.jpg 2x'>"; ?>
+                        </picture>
+                    </div>
+                    <div class="artiste-vedettes_info">
+                        <h3 class="artiste-vedettes_info_nom <?php echo $str_classLongTitre ?>"><?php echo $arr_artisteComplet[$int_randFinal]["nom_artiste"]?></h3>
+                        <p class="artiste-vedettes_info_style"><?php echo $arr_artisteComplet[$int_randFinal]["style_artiste"]?></p>
+                    </div>
+                </li>
+            </a>
+
+<?php
+        }
+    }
+echo "</ul>";
+
+echo "<div class='controles_div_total'><div class='controles_deco'><div class='controle-page'>";
 if(isset($_GET["id_style"])){
     //Déterminer max page si filtre
     $strRequeteNbArtistesFiltres = "SELECT COUNT(*) AS nbEnregistrementsArtistesFiltres FROM ti_style_artiste WHERE id_style=".$_GET["id_style"];
@@ -238,7 +302,7 @@ if(isset($_GET["id_style"])){
     if($id_page>0){
         $str_queryPagePrecedente="./index.php?id_style=".$_GET["id_style"]."&id_page=".($id_page-1);
     }
-    echo "Page ".($id_page+1)?> de <?php echo $nbPagesFiltre;
+    echo "<p class='indicateur-page'>Page ".($id_page+1)?> de <?php echo $nbPagesFiltre."</p>";
 }
 
 //Si il n'y en a pas
@@ -262,7 +326,7 @@ else{
     echo "<p class='indicateur-page'>Page ".($id_page+1)?> de <?php echo $nbPages."</p>";
 }
 ?>
-<div class="controle-page">
+
     <a class="<?php echo $str_classPagePrecedente ?>" <?php echo $hrefPrecedente ?>">Précédent</a>
     <?php
     for($intCptPagination=0; $intCptPagination<$nbPages; $intCptPagination++){
@@ -282,6 +346,8 @@ else{
     ?>
 
     <a class="<?php echo $str_classPageSuivante ?>" <?php echo $hrefSuivante ?>">Suivant</a>
+</div>
+</div>
 </div>
 <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
 </body>
