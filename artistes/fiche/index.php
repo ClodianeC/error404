@@ -166,7 +166,9 @@ $nbrImages = rand(3,5);
     <link rel="stylesheet" href="../../css/style-rosalie.css">
 </head>
 <body>
-
+<header>
+    <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
+</header>
 <!--<picture class="artiste_img">    -->
 <!--    --><?php //echo "<img src='../../img/fiche-artiste/".$arrInfos[$cptEnr]['id_artiste']."_0__carre_w366.jpg' srcset='../../img/fiche-artiste/".$arrInfos[$cptEnr]['id_artiste']."_w366.jpg 1x, ../../img/fiche-artiste/".$arrInfos[$cptEnr]['id_artiste']."_w732.jpg 2x'>"; ?>
 <!--</picture>-->
@@ -242,6 +244,10 @@ $nbrImages = rand(3,5);
             <?php
             }?>
     </section>
+
+    <footer>
+        <?php include($niveau . 'inc/fragments/footer.inc.php'); ?>
+    </footer>
 </div>
 </body>
 </html>
