@@ -38,6 +38,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 100px;
 
       ul.listeSuggestions {
         list-style-type: none;
@@ -45,12 +46,59 @@ body {
     }
   }
 
-  main {
-    display: flex;
+  main.contenuArtiste {
+    display: block;
+    .media .partieGauche {grid-area: partieGauche; }
+    .media .partieDroite {grid-area: partieDroite; }
+    @media (min-width: 600px){
+      display: grid;
+      grid-template-areas:
+      "partieGauche partieDroite";
+      grid-template-columns: 50% 50%;
+      grid-column-gap: 20px;
+    }
+    div.fondNeons {
+      padding: 15px;
+      display: inline-block;
+      position: relative;
+      z-index: 0;
+      margin-left: 30px;
+    }
+    div.fondNeons:before{
+      content:"";
+      position: absolute;
+      z-index: 0;
+      left: -10px;
+      right: 45px;
+      top: 35px;
+      bottom:20px;
+      border: 3px solid #FFE607;
+      box-shadow: 4px 4px 15px rgba(#FFE607, 0.4), -4px -4px 15px rgba(#FFE607, 0.4), -4px -4px 15px rgba(#FFE607, 0.4) inset, 4px 4px 15px rgba(#FFE607, 0.4) inset;
+    }
+    div.fondNeons#bleu:after{
+      content:"";
+      position: absolute;
+      z-index: 0;
+      left: 50px;
+      right: -10px;
+      top: 70px;
+      bottom: 0px;
+      border: 3px solid #46D3D3;
+      box-shadow: 4px 4px 15px rgba(#46D3D3, 0.4), -4px -4px 15px rgba(#46D3D3, 0.4), -4px -4px 15px rgba(#46D3D3, 0.4) inset, 4px 4px 15px rgba(#46D3D3, 0.4) inset;
+    }
+    div.fondNeons.mauve:after{
+      content:"";
+      position: absolute;
+      z-index: 0;
+      left: 50px;
+      right: -10px;
+      top: 70px;
+      bottom: 0px;
+      border: 3px solid #AC3AB6;
+      box-shadow: 4px 4px 15px rgba(#AC3AB6, 0.4), -4px -4px 15px rgba(#AC3AB6, 0.4), -4px -4px 15px rgba(#AC3AB6, 0.4) inset, 4px 4px 15px rgba(#AC3AB6, 0.4) inset;
+    }
 
-    //background-image: url("../../img/ligneBleue.svg");
     div.partieGauche {
-      width: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,26 +108,42 @@ body {
         font-family: 'Rubik Dirt', sans-serif;
         font-weight: 400;
         text-transform: uppercase;
-      }
-
-      div.fondFonce {
+        position: relative;
+        z-index: 1;
         background-color: #242526;
+        padding: 10px 20px;
+      }
         h3 {
           font-size: 32px;
           font-family: 'Alata', sans-serif;
           text-transform: uppercase;
         }
+        div.fondFonce{
+          background-color: #242526;
+          padding: 10px 20px;
+          z-index: 1;
+          position: relative;
+        }
+      div.neonsDescription:before{
+        left: -10px !important;
+        right: 45px !important;
+        top: -5px !important;
+        bottom:20px !important;
       }
     }
 
     div.partieDroite {
-      width: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
 
       div.imagesArtiste{
         display: flex;
+        z-index: 1;
+      }
+      .imageHeroArtiste{
+        z-index: 1;
+        position: relative;
       }
     }
   }

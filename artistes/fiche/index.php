@@ -182,7 +182,7 @@ $nbrImages = rand(3,5);
 -->
 <main class="contenuArtiste">
     <div class="partieGauche">
-        <div class="fondFonce">
+        <div class="fondNeons" id="bleu">
             <h1 class="nomArtiste"><?php echo $arrInfos[0]['nom_artiste']?></h1>
         </div>
 
@@ -190,7 +190,7 @@ $nbrImages = rand(3,5);
             <p class="provenanceStyleArtisteP"><?php echo $arrInfos[0]['provenance'] . " - " . $strStyles?></p>
 <!--            <p class="styleArtiste">--><?php //echo $strStyles?><!--</p>-->
         </div>
-
+<div class="fondNeons neonsDescription mauve">
         <div class="fondFonce">
             <h3>Description </h3><p class="descriptionArtiste"><?php echo $arrInfos[0]['description']?></p>
             <?php
@@ -202,18 +202,25 @@ $nbrImages = rand(3,5);
             <h3>Site web </h3><p class="siteWebArtiste"><a href="<?php echo $arrInfos[0]['site_web_artiste']?>"><?php echo $arrInfos[0]['site_web_artiste']?></a></p>
         </div>
     </div>
+    </div>
 
     <div class="partieDroite">
+        <div class="fondNeons mauve">
         <picture class="imageHeroArtiste">
             <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w366.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w366.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w732.jpg 2x'>"; ?>
         </picture>
-<!--        --><?php //echo '<img class="imageHeroArtiste" src="https://fakeimg.pl/300/">';?>
+        </div>
+<?php //echo '<img class="imageHeroArtiste" src="https://fakeimg.pl/300/">';?>
         <div class="imagesArtiste">
             <picture class="imageArtiste">
-                <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w300.jpg 2x'>"; ?>
+<?php echo "<source srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w334.jpg 2x'>"; ?>
+                <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w334.jpg'>"; ?>
+<?php //echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w300.jpg 2x'>"; ?>
+<?php //echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w300.jpg 2x'>"; ?>
             </picture>
             <picture class="imageArtiste">
-                <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w150.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w300.jpg 2x'>"; ?>
+                <?php echo "<source srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w334.jpg 2x'>"; ?>
+                <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w334.jpg'>"; ?>
             </picture>
         </div>
     </div>
