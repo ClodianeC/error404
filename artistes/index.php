@@ -23,9 +23,6 @@ $arr_tri[1]["nom"] = "Z-A";
 $arr_tri[2] = array();
 $arr_tri[2]["value"] = "az";
 $arr_tri[2]["nom"] = "A-Z";
-$arr_tri[3] = array();
-$arr_tri[3]["value"] = "style";
-$arr_tri[3]["nom"] = "Par style";
 
 
 //Établissement du nb d'artistes par pages
@@ -84,9 +81,6 @@ if (isset($_GET["tri"])==true) {
         case "za":
             $str_tri = $str_tri."nom_artiste DESC";
             break;
-        case "style":
-            $str_tri = $str_tri."id_style";
-            break;
         default:
             $str_tri = "";
     }
@@ -99,7 +93,7 @@ else{
 //Établissement de la requête pour les artistes
 //Si on a pas de filtre
 if($strId_style == 0){
-    $strRequeteArtiste="SELECT id_artiste, nom_artiste FROM t_artiste ORDER BY nom_artiste LIMIT $enregistrementDepart,$intMaxArtistes ;";
+    $strRequeteArtiste="SELECT id_artiste, nom_artiste FROM t_artiste $str_tri LIMIT $enregistrementDepart,$intMaxArtistes ;";
 }
 //Si on a un filtre
 else{
@@ -219,13 +213,13 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <?php include($niveau . 'inc/fragments/head-links.html'); ?>
     <link rel="stylesheet" href="<?php echo $niveau ?>css/style-clodiane.css">
 </head>
-
+<body>
 <div>
 <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
 
 <form class="tri-filtres" action="index.php" method="get">
     <div class="section-tri">
-        <h2 class="h2_tri">Trier :</h2>
+        <h2 class="h2_tri">Trier:</h2>
         <div class="tri_formulaire">
             <select name="tri" id="tri" class="tri_liste-deroulante">
             <?php
@@ -237,6 +231,14 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
                             $strSelected = "selected";
                         }
                     }
+                    if(isset($_GET["btn_reinitialiser"])){
+                        if($intCptTri==0){
+                            $strSelected="selected";
+                        }
+                        else{
+                            $strSelected="";
+                        }
+                    }
                     echo "<option class='tri_choix' value='".$arr_tri[$intCptTri]["value"]."' $strSelected>".$arr_tri[$intCptTri]["nom"]."</option>";
                 }
             ?>
@@ -244,7 +246,7 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         </div>
     </div>
     <div class="section-filtre">
-        <h2 class="h2_tri">Filtrer par styles :</h2>
+        <h2 class="h2_tri">Filtrer par styles:</h2>
         <div class="filtre_formulaire">
             <?php
             for($intCptFiltre = 0; $intCptFiltre < count($arr_style); $intCptFiltre++){
@@ -258,6 +260,9 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
                         }
                     }
                 }
+                if(isset($_GET["btn_reinitialiser"])){
+                    $strChecked="";
+                }
                 echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='id_style[]' value='".$id_style."' $strChecked>";
                 echo "<label class='label_checkbox-style'for='".$str_style."'>$str_style</label></li>";
             }
@@ -266,8 +271,8 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         </div>
     </div>
 
-    <button type="submit" class="bouton appliquer"><p>Appliquer</p></button>
-    <button type="reset" class="bouton reinitialiser"><p>Réinitialiser</p></button>
+    <button type="submit" class="bouton appliquer" name="btn_appliquer" id="btn_appliquer" value="appliquer"><p>Appliquer</p></button>
+    <button type="submit" class="bouton reinitialiser" name="btn_reinitialiser" id="btn_reinitialiser" value="reinitialisation"><p>Réinitialiser</p></button>
 </form>
 <div class="titre">
     <div class="h1_deco">
@@ -298,7 +303,10 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         <li class="artistes <?php echo $str_classArtistePair?>">
             <div class="artistes_deco">
                 <picture class="artiste_img">
-                    <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
+                    <?php
+                    echo "<source srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>";
+                    echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' alt='Image représentant ".$arr_artiste[$intCpt]["nom_artiste"]."'>";
+                    ?>
                 </picture>
             </div>
             <div class="artiste_info">
@@ -413,7 +421,13 @@ else{
         }
         else{
             $str_classActif = "actif";
-            $href = "href='./index.php?id_page=$intCptPagination'";
+            if(isset($_GET["id_style"])){
+                $href = "href='./index.php?".$str_queryPageTri.$str_queryPageStyles."&id_page=$intCptPagination'";
+            }
+            else{
+                $href = "href='./index.php?".$str_queryPageTri."&id_page=$intCptPagination'";
+            }
+
         }
         $int_pageLien = $intCptPagination+1;
         echo "<a class='page $str_classActif' $href>".$int_pageLien."</a>";
@@ -421,9 +435,7 @@ else{
     }
     ?>
 
-    <a class="<?php echo $str_classPageSuivante ?>" href="<?php echo $hrefSuivante ?>">Suivant</a>
-</div>
-</div>
+    <a class="<?php echo $str_classPageSuivante ?>" <?php echo $hrefSuivante ?>">Suivant</a>
 </div>
 <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
 </body>
