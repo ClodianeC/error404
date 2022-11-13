@@ -60,7 +60,6 @@ if (isset($_GET["id_style"])==true) {
         if($intCptS!=0){
             $strId_style = $strId_style.", ";
             $str_queryPageStyles = $str_queryPageStyles."&";
-
         }
         $strId_style = $strId_style.$valueS;
         $str_queryPageStyles = $str_queryPageStyles."id_style%5B%5D=".$valueS;
@@ -437,6 +436,9 @@ else{
 
     <a class="<?php echo $str_classPageSuivante ?>" <?php echo $hrefSuivante ?>">Suivant</a>
 </div>
-<?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
+</div>
 </body>
+<footer>
+    <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
+</footer>
 </html>
