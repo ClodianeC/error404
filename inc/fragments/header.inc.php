@@ -24,7 +24,7 @@
                        arria-current="page">Programmation</a>
                 </li>
                 <li class="nav--principale__list-elem">
-                    <a href="<?php echo $niveau ?>artistes/index.php" class="nav--principale__link">Participants</a>
+                    <a href="<?php echo $niveau ?>artistes/index.php" class="nav--principale__link">Artistes</a>
                 </li>
                 <li class="nav--principale__list-elem">
                     <a href="#" class="nav--principale__link">Contactez-nous</a>
@@ -61,5 +61,5 @@
         <button class="btn_carousel bouton_carousel-3" id="btn3" value="btn3"></button>
     </div>
 </header>
-<link rel="stylesheet" href="<?php echo $niveau ?>scss/style-isaac.css">
+<link rel="stylesheet" href="<?php echo $niveau ?>scss/style-header.css">
 <script src="<?php echo $niveau ?>js/menu.js"></script>
