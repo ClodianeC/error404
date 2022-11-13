@@ -14,6 +14,16 @@ if(isset($_GET["id_page"])){
 else{
     $id_page = 0;
 }
+$arr_tri[0] = array();
+$arr_tri[0]["value"] = "defaut";
+$arr_tri[0]["nom"] = "Par défaut";
+$arr_tri[1] = array();
+$arr_tri[1]["value"] = "za";
+$arr_tri[1]["nom"] = "Z-A";
+$arr_tri[2] = array();
+$arr_tri[2]["value"] = "az";
+$arr_tri[2]["nom"] = "A-Z";
+
 
 //Établissement du nb d'artistes par pages
 $intMaxArtistes = 4;
@@ -40,22 +50,53 @@ $pdosResultat->closeCursor();
 //Calcul nb de pages (nbArtistes/maxArtistesParPages)
 $nbPages = ceil($intNbArtiste / $intMaxArtistes);
 
+$strId_style = "";
+$intCptS = 0;
+$str_queryPageStyles = "";
+$str_queryPageTri = "";
 //Vérification si on un style de sélectionné comme filtre
 if (isset($_GET["id_style"])==true) {
-    $strId_style = $_GET["id_style"];
+    foreach($_GET["id_style"] as $valueS){
+        if($intCptS!=0){
+            $strId_style = $strId_style.", ";
+            $str_queryPageStyles = $str_queryPageStyles."&";
+        }
+        $strId_style = $strId_style.$valueS;
+        $str_queryPageStyles = $str_queryPageStyles."id_style%5B%5D=".$valueS;
+
+        $intCptS ++;
+    }
 }
 else{
     $strId_style = 0;
 }
 
+if (isset($_GET["tri"])==true) {
+    $str_tri = "ORDER BY ";
+    switch ($_GET["tri"]){
+        case "az":
+            $str_tri = $str_tri."nom_artiste";
+            break;
+        case "za":
+            $str_tri = $str_tri."nom_artiste DESC";
+            break;
+        default:
+            $str_tri = "";
+    }
+    $str_queryPageTri = "tri=".$_GET["tri"]."&";
+}
+else{
+    $str_tri = "";
+}
+
 //Établissement de la requête pour les artistes
 //Si on a pas de filtre
 if($strId_style == 0){
-    $strRequeteArtiste="SELECT id_artiste, nom_artiste FROM t_artiste ORDER BY nom_artiste LIMIT $enregistrementDepart,$intMaxArtistes ;";
+    $strRequeteArtiste="SELECT id_artiste, nom_artiste FROM t_artiste $str_tri LIMIT $enregistrementDepart,$intMaxArtistes ;";
 }
 //Si on a un filtre
 else{
-    $strRequeteArtiste="SELECT DISTINCT t_artiste.id_artiste, nom_artiste FROM ti_style_artiste INNER JOIN t_artiste ON ti_style_artiste.id_artiste=t_artiste.id_artiste WHERE ti_style_artiste.id_style=$strId_style ORDER BY nom_artiste LIMIT $enregistrementDepart,$intMaxArtistes ";
+    $strRequeteArtiste="SELECT DISTINCT t_artiste.id_artiste, nom_artiste FROM ti_style_artiste INNER JOIN t_artiste ON ti_style_artiste.id_artiste=t_artiste.id_artiste WHERE ti_style_artiste.id_style IN($strId_style) $str_tri LIMIT $enregistrementDepart,$intMaxArtistes ";
 }
 
 //Initialisation de PDOStatement avec la requête
@@ -171,47 +212,75 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
     <?php include($niveau . 'inc/fragments/head-links.html'); ?>
     <link rel="stylesheet" href="<?php echo $niveau ?>css/style-clodiane.css">
 </head>
-
+<body>
 <div>
 <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
 
-<form class="tri-filtres">
+<form class="tri-filtres" action="index.php" method="get">
     <div class="section-tri">
-        <h2 class="h2_tri">Trier :</h2>
+        <h2 class="h2_tri">Trier:</h2>
         <div class="tri_formulaire">
             <select name="tri" id="tri" class="tri_liste-deroulante">
-                <option class="tri_choix" value="Par défault">Par défaut</option>
-                <option class="tri_choix" value="A-Z">A-Z</option>
-                <option class="tri_choix" value="Z-A">Z-A</option>
-                <option class="tri_choix" value="Par style">Par style</option>
+            <?php
+                for($intCptTri = 0; $intCptTri<count($arr_tri);$intCptTri++){
+                    $strSelected = "";
+                    $strTriActu = $arr_tri[$intCptTri]["value"];
+                    if(isset($_GET["tri"])){
+                        if($strTriActu == $_GET["tri"]){
+                            $strSelected = "selected";
+                        }
+                    }
+                    if(isset($_GET["btn_reinitialiser"])){
+                        if($intCptTri==0){
+                            $strSelected="selected";
+                        }
+                        else{
+                            $strSelected="";
+                        }
+                    }
+                    echo "<option class='tri_choix' value='".$arr_tri[$intCptTri]["value"]."' $strSelected>".$arr_tri[$intCptTri]["nom"]."</option>";
+                }
+            ?>
             </select>
         </div>
     </div>
     <div class="section-filtre">
-        <h2 class="h2_tri">Filtrer par styles :</h2>
+        <h2 class="h2_tri">Filtrer par styles:</h2>
         <div class="filtre_formulaire">
             <?php
             for($intCptFiltre = 0; $intCptFiltre < count($arr_style); $intCptFiltre++){
                 $str_style = $arr_style[$intCptFiltre]["nom_style"];
                 $id_style = $arr_style[$intCptFiltre]["id_style"];
-                echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='style-filtre' value='".$id_style."'>";
+                $strChecked = "";
+                if(isset($_GET["id_style"])){
+                    for($intCptFiltreStyle=0; $intCptFiltreStyle<count($_GET["id_style"]); $intCptFiltreStyle++){
+                        if($id_style == $_GET["id_style"][$intCptFiltreStyle]){
+                            $strChecked = "checked";
+                        }
+                    }
+                }
+                if(isset($_GET["btn_reinitialiser"])){
+                    $strChecked="";
+                }
+                echo "<li class='filtre_element'><input class='checkbox-style' type='checkbox' id='".$str_style."' name='id_style[]' value='".$id_style."' $strChecked>";
                 echo "<label class='label_checkbox-style'for='".$str_style."'>$str_style</label></li>";
             }
+
             ?>
         </div>
     </div>
 
-    <button type="submit" class="bouton appliquer"><p>Appliquer</p></button>
-    <button type="reset" class="bouton reinitialiser"><p>Réinitialiser</p></button>
+    <button type="submit" class="bouton appliquer" name="btn_appliquer" id="btn_appliquer" value="appliquer"><p>Appliquer</p></button>
+    <button type="submit" class="bouton reinitialiser" name="btn_reinitialiser" id="btn_reinitialiser" value="reinitialisation"><p>Réinitialiser</p></button>
 </form>
 <div class="titre">
     <div class="h1_deco">
         <h1 class="h1">Artistes
-            <?php
-            if(isset($_GET["id_style"])){
-                echo " du style ".$arr_style[($_GET["id_style"]-1)]["nom_style"];
-            }
-            ?>
+<!--            --><?php
+//            if(isset($_GET["id_style"])){
+//                echo " du style ".$arr_style[($_GET["id_style"]-1)]["nom_style"];
+//            }
+//            ?>
         </h1>
     </div>
 </div>
@@ -233,7 +302,10 @@ for($intCptRand = 0; $intCptRand<3 && $intCptRand<count($arr_artisteComplet); $i
         <li class="artistes <?php echo $str_classArtistePair?>">
             <div class="artistes_deco">
                 <picture class="artiste_img">
-                    <?php echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>"; ?>
+                    <?php
+                    echo "<source srcset='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w260.jpg 1x, ../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg 2x'>";
+                    echo "<img src='../images/liste-artistes/artistes/".$arr_artiste[$intCpt]['id_artiste']."_w520.jpg' alt='Image représentant ".$arr_artiste[$intCpt]["nom_artiste"]."'>";
+                    ?>
                 </picture>
             </div>
             <div class="artiste_info">
@@ -287,9 +359,10 @@ echo "<ul class='liste_artistes-vedettes'>";
 echo "</ul>";
 
 echo "<div class='controles_div_total'><div class='controles_deco'><div class='controle-page'>";
+$nbPagesFiltre = $nbPages;
 if(isset($_GET["id_style"])){
     //Déterminer max page si filtre
-    $strRequeteNbArtistesFiltres = "SELECT COUNT(*) AS nbEnregistrementsArtistesFiltres FROM ti_style_artiste WHERE id_style=".$_GET["id_style"];
+    $strRequeteNbArtistesFiltres = "SELECT COUNT(*) AS nbEnregistrementsArtistesFiltres FROM ti_style_artiste WHERE id_style IN(".$strId_style.")";
     $pdosResultat = $pdoConnexion->prepare($strRequeteNbArtistesFiltres);
     $pdosResultat->execute();
     $ligne = $pdosResultat->fetch();
@@ -297,10 +370,20 @@ if(isset($_GET["id_style"])){
     $pdosResultat->closeCursor();
     $nbPagesFiltre = ceil($intNbArtisteFiltre / $intMaxArtistes);
     if($id_page<($nbPagesFiltre-1)){
-        $str_queryPageSuivante="./index.php?id_style=".$_GET["id_style"]."&id_page=".($id_page+1);
+        $hrefSuivante = "./index.php?".$str_queryPageTri.$str_queryPageStyles."&id_page=".($id_page+1);
+        $str_classPageSuivante="suivante actif";
+    }
+    else{
+        $hrefSuivante = "";
+        $str_classPageSuivante="suivante inactif";
     }
     if($id_page>0){
-        $str_queryPagePrecedente="./index.php?id_style=".$_GET["id_style"]."&id_page=".($id_page-1);
+        $hrefPrecedente = "./index.php?".$str_queryPageTri.$str_queryPageStyles."&id_page=".($id_page-1);
+        $str_classPagePrecedente="precedente actif";
+    }
+    else{
+        $hrefPrecedente = "";
+        $str_classPagePrecedente="precedente inactif";
     }
     echo "<p class='indicateur-page'>Page ".($id_page+1)?> de <?php echo $nbPagesFiltre."</p>";
 }
@@ -329,7 +412,7 @@ else{
 
     <a class="<?php echo $str_classPagePrecedente ?>" <?php echo $hrefPrecedente ?>">Précédent</a>
     <?php
-    for($intCptPagination=0; $intCptPagination<$nbPages; $intCptPagination++){
+    for($intCptPagination=0; $intCptPagination<$nbPages && $intCptPagination<$nbPagesFiltre; $intCptPagination++){
         $str_classActif = "";
         $href = "";
         if($intCptPagination == $id_page){
@@ -337,7 +420,13 @@ else{
         }
         else{
             $str_classActif = "actif";
-            $href = "href='./index.php?id_page=$intCptPagination'";
+            if(isset($_GET["id_style"])){
+                $href = "href='./index.php?".$str_queryPageTri.$str_queryPageStyles."&id_page=$intCptPagination'";
+            }
+            else{
+                $href = "href='./index.php?".$str_queryPageTri."&id_page=$intCptPagination'";
+            }
+
         }
         $int_pageLien = $intCptPagination+1;
         echo "<a class='page $str_classActif' $href>".$int_pageLien."</a>";
@@ -348,7 +437,8 @@ else{
     <a class="<?php echo $str_classPageSuivante ?>" <?php echo $hrefSuivante ?>">Suivant</a>
 </div>
 </div>
-</div>
-<?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
 </body>
+<footer>
+    <?php include($niveau . 'inc/fragments/footer.inc.php');; ?>
+</footer>
 </html>
