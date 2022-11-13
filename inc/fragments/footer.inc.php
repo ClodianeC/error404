@@ -7,10 +7,10 @@
                    arria-current="page">Programmation</a>
             </li>
             <li class="nav--principale__list-elem">
-                <a href="<?php echo $niveau ?>artistes/index.php" class="nav--principale__link">Participants</a>
+                <a href="<?php echo $niveau ?>artistes/index.php" class="nav--principale__link">Artistes</a>
             </li>
             <li class="nav--principale__list-elem">
-                <a href="<?php echo $niveau ?>artistes/fiche/index.php" class="nav--principale__link">Fiches</a>
+                <a href="<?php echo $niveau ?>#" class="nav--principale__link">Contactez-nous</a>
             </li>
         </ul>
     </nav>
@@ -41,8 +41,8 @@
             <p class="courant-text">G1R 5R5</p><br>
         </div>
         <div class="footer__socials--info-email">
-            <a href="mailto: info@quebecoff.org">info@quebecoff.org</a>
-            <a href="mailto: media@quebecoff.org">media@quebecoff.org</a>
+            <a class='email' href="mailto: info@quebecoff.org">info@quebecoff.org</a>
+            <a class='email' href="mailto: media@quebecoff.org">media@quebecoff.org</a>
         </div>
         </div>
         </div>
@@ -53,4 +53,4 @@
         </small>
     </div>
 </footer>
-<link rel="stylesheet" href="<?php echo $niveau ?>scss/style-isaac.css">
+<link rel="stylesheet" href="<?php echo $niveau ?>scss/style-footer.css">
