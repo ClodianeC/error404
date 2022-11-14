@@ -12,10 +12,20 @@ body {
   font-size: 16px;
   background-color: #242526;
   color: white;
+  background-image: url("../../images/fond/neons-mobile.png");
+  width: 100%;
+}
+@media (min-width: 800px) {
+  body {
+    background-image: url("../../images/fond/neons-table.png");
+  }
 }
 body a {
   color: white;
   text-decoration: none;
+}
+body img {
+  width: auto !important;
 }
 body h2 {
   font-size: 40px;
@@ -26,6 +36,9 @@ body div.artistesSugDiv {
   background-color: #242526;
   filter: drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5));
 }
+body div.artistesSugDiv h2.suggestions {
+  margin-top: 50px;
+}
 body div.artistesSugDiv section.artistesSug {
   display: flex;
   flex-direction: column;
@@ -34,6 +47,46 @@ body div.artistesSugDiv section.artistesSug {
 }
 body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 100px;
+}
+@media (min-width: 1000px) {
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug {
+    color: white;
+  }
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:link,
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:visited {
+    color: white;
+  }
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:hover,
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:active {
+    color: white;
+    text-decoration: underline;
+  }
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 25px;
+  text-align: center;
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug p.nomArtisteSug {
+  z-index: 1;
+  position: relative;
+  top: 340px;
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug img.imgHeroArtisteSug {
+  z-index: 0;
 }
 body main.contenuArtiste {
   display: block;
@@ -44,7 +97,7 @@ body main.contenuArtiste .media .partieGauche {
 body main.contenuArtiste .media .partieDroite {
   grid-area: partieDroite;
 }
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
   body main.contenuArtiste {
     display: grid;
     grid-template-areas: "partieGauche partieDroite";
@@ -52,12 +105,33 @@ body main.contenuArtiste .media .partieDroite {
     grid-column-gap: 20px;
   }
 }
+body main.contenuArtiste div.fondFonce {
+  background-color: #242526;
+  padding: 10px 20px;
+  z-index: 1;
+  position: relative;
+}
 body main.contenuArtiste div.fondNeons {
   padding: 15px;
   display: inline-block;
   position: relative;
   z-index: 0;
   margin-left: 30px;
+}
+@media (min-width: 1000px) {
+  body main.contenuArtiste div.fondNeons {
+    margin-right: 100px;
+  }
+}
+body main.contenuArtiste div.fondNeons .imageHeroArtiste {
+  margin-left: 100px;
+  z-index: 1;
+  position: relative;
+}
+@media (min-width: 1000px) {
+  body main.contenuArtiste div.fondNeons .imageHeroArtiste {
+    margin-left: 100px;
+  }
 }
 body main.contenuArtiste div.fondNeons:before {
   content: "";
@@ -111,12 +185,6 @@ body main.contenuArtiste div.partieGauche h3 {
   font-size: 32px;
   font-family: "Alata", sans-serif;
   text-transform: uppercase;
-}
-body main.contenuArtiste div.partieGauche div.fondFonce {
-  background-color: #242526;
-  padding: 10px 20px;
-  z-index: 1;
-  position: relative;
 }
 body main.contenuArtiste div.partieGauche div.neonsDescription:before {
   left: -10px !important;
