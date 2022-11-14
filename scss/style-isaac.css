@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/**
+ * @author Rosalie Roy - 2133488@csfoy.ca
+ *
+ * TABLE DES MATIERES
+ ** Importation de polices
+ **
+ */
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+.main,
+.footer {
+  background-image: url("../image_accueil/accueil_table/bg.png");
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-attachment: fixed;
+}
+
+.main {
+  padding: 20px 20px;
+}
+
+.div_main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.h1 {
+  font-family: 'Rubik Dirt';
+  font-size: 50px;
+  color: white;
+}
+
+.h2 {
+  color: white;
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.picture_left {
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.picture_right {
+  width: auto;
+  position: relative;
+  z-index: 1;
+  padding-top: 50px;
+}
+
+.img_article {
+  margin-top: 30px;
+  width: 50%;
+  z-index: 1;
+}
+
+.picture_left::before {
+  position: absolute;
+  z-index: -1;
+  content: ' ';
+  width: 100%;
+  height: 13rem;
+  left: -5%;
+  border: 3px solid #FFE607;
+  /* Lumière bleue table */
+  -webkit-filter: drop-shadow(-4px -4px 15px rgba(255, 230, 7, 0.4)) drop-shadow(4px 4px 15px rgba(255, 230, 7, 0.4));
+          filter: drop-shadow(-4px -4px 15px rgba(255, 230, 7, 0.4)) drop-shadow(4px 4px 15px rgba(255, 230, 7, 0.4));
+}
+
+.picture_left::after {
+  position: absolute;
+  z-index: -1;
+  content: ' ';
+  width: 100%;
+  height: 13rem;
+  right: -5%;
+  top: -11rem;
+  border: 3px solid #46D3D3;
+  /* Lumière bleue table */
+  -webkit-filter: drop-shadow(4px 4px 15px rgba(70, 211, 211, 0.4)) drop-shadow(-4px -4px 15px rgba(70, 211, 211, 0.4));
+          filter: drop-shadow(4px 4px 15px rgba(70, 211, 211, 0.4)) drop-shadow(-4px -4px 15px rgba(70, 211, 211, 0.4));
+}
+
+.section_photo {
+  margin-top: 50px;
+}
+/*# sourceMappingURL=style-isaac.css.map */
