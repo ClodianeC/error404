@@ -12,7 +12,24 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin: 0 auto;
   background-color: #242526;
+}
+
+.footer .nav--principale__list-elem:nth-child(1):hover {
+  text-shadow: -4px 4px 15px #AC3AB6, 4px 4px 15px #AC3AB6;
+}
+
+.footer .nav--principale__list-elem:nth-child(2):hover {
+  text-shadow: -4px 4px 15px #fff7ae, 4px 4px 15px #ffe607;
+}
+
+.footer .nav--principale__list-elem:last-child:hover {
+  text-shadow: -4px 4px 15px #46d3d3, 4px 4px 15px #46d3d3;
 }
 
 .footer .footer-nav {
@@ -92,7 +109,8 @@
 
 @media (min-width: 1000px) {
   .footer .purpleBG {
-    margin: 0 200px;
+    margin: 0 auto;
+    width: 1000px;
   }
 }
 

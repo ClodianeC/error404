@@ -7,7 +7,6 @@
  ** Importation de polices
  **
  */
-@import url();
 // Importation de polices
 // RUBIK DIRT (H1)
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
@@ -29,6 +28,7 @@
   background-repeat: no-repeat;
   background-position: fixed;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .main {
@@ -38,6 +38,7 @@
 .div_main {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 20px 20px;
 }
 
 .h1 {
@@ -61,14 +62,36 @@
 .picture_right {
   width: auto;
   position: relative;
+ 
   z-index: 1;
-  padding-top: 50px;
 }
 
 .img_article {
   margin-top: 30px;
-  width: 50%;
+  width: 100%;
   z-index: 1;
+  @media(max-width: 570px) {
+    width: 100%;
+   }
+
+}
+
+.img_article_2{
+  width: 100%;
+  z-index: 1;
+}
+
+.tout_est_possible{
+  display: flex;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+ @media(max-width: 570px) {
+  flex-direction: column;
+ }
 }
 
 
@@ -79,14 +102,21 @@
 
   content: ' ';
   width: 100%;
-  height:13rem;
-  left: -5%;
+  height:95%;
+  left: -3%;
+  top:-5%;
 
 
 border: 3px solid #FFE607;
   /* Lumière bleue table */
 
   filter: drop-shadow(-4px -4px 15px rgba(255, 230, 7, 0.4)) drop-shadow(4px 4px 15px rgba(255, 230, 7, 0.4));
+
+  @media(max-width:570px) {
+    height:9rem;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .picture_left::after {
@@ -96,17 +126,307 @@ border: 3px solid #FFE607;
 
   content: ' ';
   width: 100%;
-  height:13rem;
-  right: -5%;
-  top: -11rem;
+  height:95%;
+  left: 1%;
+  bottom: -5%;
   border: 3px solid #46D3D3;
   /* Lumière bleue table */
   
   filter: drop-shadow(4px 4px 15px rgba(70, 211, 211, 0.4)) drop-shadow(-4px -4px 15px rgba(70, 211, 211, 0.4));
+
+  @media(max-width:570px) {
+    height:9rem;
+    width: 100%;
+    height: 100%;
+  }
 }
 
+
+.picture_right::before {
+
+  position: absolute;
+  z-index: -1;
+
+  content: ' ';
+  width: 100%;
+  height:13rem;
+  left: -3%;
+  top:-5%;
+
+
+border: 3px solid #FFE607;
+  /* Lumière bleue table */
+
+  filter: drop-shadow(-4px -4px 15px rgba(255, 230, 7, 0.4)) drop-shadow(4px 4px 15px rgba(255, 230, 7, 0.4));
+  @media(max-width:570px) {
+    height:15rem;
+  }
+}
+
+
+.picture_right::after {
+
+  position: absolute;
+  z-index: -1;
+
+  content: ' ';
+  width: 100%;
+  height:15rem;
+  left: 2%;
+  bottom: -5%;
+  border: 3px solid #46D3D3;
+  /* Lumière bleue table */
+  
+  filter: drop-shadow(4px 4px 15px rgba(70, 211, 211, 0.4)) drop-shadow(-4px -4px 15px rgba(70, 211, 211, 0.4));
+
+  @media(max-width:570px) {
+    height:15rem;
+  }
+}
 
 .section_photo {
   margin-top: 50px;
+} 
+
+.h2 {
+
+  text-align: center;
+  @media(max-width:570px) {
+    font-size: 35px;
+    
+  }
 }
 
+//////  actualités   //////@at-root
+
+.centenu-actu1,
+.centenu-actu3,
+.centenu-actu5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  @media(max-width: 740px) {
+    flex-direction: column;
+  }
+}
+
+.centenu-actu2,
+.centenu-actu4 {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  @media(max-width: 740px) {
+    flex-direction: column;
+  }
+}
+
+.actualite_elem {
+  margin-top: 150px ;
+}
+
+
+.actualite .h3 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: white;
+}
+
+h4, p{
+  color: white;
+}
+
+.actu-picture{
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.actu-picture::before {
+position: absolute;
+left: 4.32%;
+height: 95%;
+width: 95%;
+left:-3%;
+top: -5%;
+content: '';
+z-index: -1;
+
+/* Purple */
+
+border: 3px solid #AC3AB6;
+/* Lumière mauve table */
+
+filter: drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5));
+
+}
+
+.actu {
+  width: 100%;
+
+  @media(max-width:570px) {
+    width: 100%;
+  }
+}
+
+
+
+.text-actu {
+  max-width: 50%;
+  height: fit-content;
+  border: 3px solid #FFE607;
+  padding: 20px 20px;
+/* Lumière jaune table */
+
+box-shadow: -4px -4px 15px rgba(255, 230, 7, 0.4), 4px 4px 15px rgba(255, 230, 7, 0.4);
+
+@media(max-width: 740px) {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+}
+
+//// artiste suggérés //// 
+
+
+.artiste_sugg {
+  margin-top: 100px;
+  width: 1000px;
+ 
+
+
+  .h2{
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+
+  @media(max-width:1010px) {
+    flex-direction: column;
+   align-items: center;
+   margin: 100px auto;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+  }
+
+}
+
+.list_artistes {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  max-width: 1000px;
+  flex-basis: auto;
+  gap: 30px;
+
+  @media(max-width:1010px) {
+    flex-direction: column;
+   align-items: center;
+   margin: 0 auto;
+   max-width: fit-content;
+  }
+}
+
+.list_artistes-elem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+  .lien_artiste {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+.list_artistes-elem:hover .lien_artiste {
+color: #AC3AB6;
+}
+
+.sugg{
+  width: 100%;
+  margin-top: 15px;
+}
+
+.artiste_sugg-picture {
+  @media(max-width:1010px) {
+    margin: 0 auto;
+    width: fit-content;
+  }
+} 
+
+/// tarifs ///
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px ;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  .h2 {
+    margin-top: 100px;
+  }
+}
+
+.tarif1 {
+  padding: 20px;
+  width: 100%;
+  background-color: #AC3AB6;
+  border: 3px solid #AC3AB6;
+  /* Lumière mauve table */
+  
+  filter: drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5));
+}
+
+.tarif2{
+  padding: 20px;
+  color: black;
+  width: 100%;
+  background-color: #FFE607;
+  border: 3px solid #FFE607;
+/* Lumière jaune table */
+
+box-shadow: -4px -4px 15px rgba(255, 230, 7, 0.4), 4px 4px 15px rgba(255, 230, 7, 0.4);
+}
+
+.tarif3{
+  padding: 20px;
+  color: black;
+  width: 100%;
+  background-color: #46D3D3;
+  border: 3px solid #46D3D3;
+  box-shadow: -4px -4px 15px rgba(70, 211, 211, 0.4), 4px 4px 15px rgba(70, 211, 211, 0.4);
+}
+
+
+//// lieux ////
+
+.liste_lieux {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.liste_lieux-elem:nth-child(odd) {
+  border: 3px solid #46D3D3;
+  box-shadow: -4px -4px 15px rgba(70, 211, 211, 0.4), 4px 4px 15px rgba(70, 211, 211, 0.4);
+  color: white;
+  padding: 20px;
+}
+
+.liste_lieux-elem:nth-child(even) {
+  color: white;
+  padding: 20px;
+  border: 3px solid #AC3AB6;
+  /* Lumière mauve table */
+  
+  filter: drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5));
+}
