@@ -9,8 +9,23 @@
     gap: 30px;
     position: relative;
     flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
   
     background-color: #242526;
+
+    .nav--principale__list-elem:nth-child(1):hover {
+      text-shadow: -4px 4px 15px #AC3AB6, 4px 4px 15px #AC3AB6;
+    }
+    
+    .nav--principale__list-elem:nth-child(2):hover {
+      text-shadow: -4px 4px 15px rgb(255, 247, 174), 4px 4px 15px rgb(255, 230, 7);
+    }
+    
+    .nav--principale__list-elem:last-child:hover {
+      text-shadow: -4px 4px 15px rgb(70, 211, 211), 4px 4px 15px rgb(70, 211, 211);
+    }
   
     .footer-nav {
       position: unset;
@@ -69,7 +84,8 @@
       padding: 20px 20px;
   
       @media(min-width:1000px) {
-        margin: 0 200px;
+        margin: 0 auto;
+        width: 1000px;
       }
     }
   
@@ -108,3 +124,5 @@
     text-align: center;
     padding: 0 10px;
   }
+
+

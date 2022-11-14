@@ -13,6 +13,8 @@ hamburger.querySelectorAll('nav--principale__link').forEach(n => n.addEventListe
  navMenu.classList.remove("active")
 }));
 
+function actualite() 
+
 //*** crousselle ***//
 
 let refDivCarousel = document.getElementById('image_carousel');
@@ -79,6 +81,9 @@ document.getElementById('btn3').addEventListener('click', function () {
  changerDePhoto(3);
 });
 
+window.addEventListener('load', function () {
+  actualite();
+});
 
 
 
