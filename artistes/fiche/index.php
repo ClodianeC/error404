@@ -161,12 +161,13 @@ $pdosResultat->closeCursor();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title>Fiche d'artiste - Nom de l'artiste</title>
+    <title>Festival OFF - <?php echo $arrInfos[0]['nom_artiste']?></title>
+    <?php include($niveau . 'inc/fragments/head-links.html'); ?>
     <link rel="stylesheet" href="../../css/style-rosalie.css">
 </head>
 <body>
 <header>
-<!--    --><?php //include($niveau . 'inc/fragments/header.inc.php'); ?>
+    <?php include($niveau . 'inc/fragments/header.inc.php'); ?>
 </header>
 <!--<picture class="artiste_img">    -->
 <!--    --><?php //echo "<img src='../../img/fiche-artiste/".$arrInfos[$cptEnr]['id_artiste']."_0__carre_w366.jpg' srcset='../../img/fiche-artiste/".$arrInfos[$cptEnr]['id_artiste']."_w366.jpg 1x, ../../img/fiche-artiste/".$arrInfos[$cptEnr]['id_artiste']."_w732.jpg 2x'>"; ?>
@@ -181,20 +182,17 @@ $pdosResultat->closeCursor();
 -->
 <main class="contenuArtiste">
     <div class="partieGauche">
-        <div class="fondNeons mauve">
-        <picture class="imageHeroArtiste">
-            <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w366.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w366.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w732.jpg 2x'>"; ?>
+        <div class="fondNeonsHero mauve">
+        <picture class="imageHeroArtiste" style="position:relative;z-index:1;">
+            <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w366.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w366.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_0__carre_w732.jpg 2x' class='imgHeroArtiste' style='position:relative;z-index:1;'>"; ?>
         </picture>
         </div>
-<?php //echo '<img class="imageHeroArtiste" src="https://fakeimg.pl/300/">';?>
         <div class="imagesArtiste">
-            <picture class="imageArtiste">
+            <picture class="imageArtiste imageArtisteGauche" style="margin-right: 10px">
 <?php echo "<source srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w334.jpg 2x'>"; ?>
                 <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w334.jpg'>"; ?>
-<?php //echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w300.jpg 2x'>"; ?>
-<?php //echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg' srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_1__carre_w300.jpg 2x'>"; ?>
             </picture>
-            <picture class="imageArtiste">
+            <picture class="imageArtiste imageArtisteDroite" style="margin-left: 10px">
                 <?php echo "<source srcset='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w150.jpg 1x, ../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w334.jpg 2x'>"; ?>
                 <?php echo "<img src='../../img/fiche-artiste/".$arrInfos[0]['id_artiste']."_2__carre_w334.jpg'>"; ?>
             </picture>
@@ -253,7 +251,7 @@ $pdosResultat->closeCursor();
     </section>
 
     <footer>
-<!--        --><?php //include($niveau . 'inc/fragments/footer.inc.php'); ?>
+        <?php include($niveau . 'inc/fragments/footer.inc.php'); ?>
     </footer>
 </div>
 </body>

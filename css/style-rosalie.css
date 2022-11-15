@@ -1,95 +1,219 @@
+@charset "UTF-8";
 /**
  * @author Rosalie Roy - 2133488@csfoy.ca
  *
  * TABLE DES MATIERES
- ** Importation de polices
- **
+ ** Importation de la charte typographique
+ ** Importation des utilitaires (variables)
+ ** Styles du body / généraux
+ *** Main
+ **** Partie droite
+ **** Partie gauche
+ *** Artistes suggérés
+ */
+/* Charte typographique
+   ========================================================================== */
+/**
+ * Typographie responsive (Mobile First)
+   ========================================================================
+ *
+ * @author Clodiane Charette 2164515@csfoy.ca
+ *
+ * TABLE DES MATIÈRES
+ * Polices
+ * Base décimale
+ * Hiérarchie responsive
+ *
+ *
+ * Doc des points de rupture :
+ * ==========================================================================
+ * Écran étroit : de 0 à 800px
+ * point de rupture: 800px
+ *
+ * Écran large : 801px et +
  */
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+h1,
+.h1 {
+  font-family: "RubikDirt", sans-serif;
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-family: "Alata", sans-serif;
+}
+
 body {
-  font-family: Helvetica;
-  font-size: 16px;
-  background-color: #242526;
-  color: white;
-  background-image: url("../../images/fond/neons-mobile.png");
-  width: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+/* Base décimale */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* 16px pour toutes les largeurs d'écran */
+  font-size: 1.6rem;
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+}
+
+@media (min-width: 600px) {
+  body {
+    line-height: 1.5;
+  }
 }
 @media (min-width: 800px) {
   body {
-    background-image: url("../../images/fond/neons-table.png");
+    line-height: 1.75;
+  }
+}
+/* Hiérarchie responsive : plus proche = plus petit  &  plus loin = plus grand */
+h1,
+.h1 { /* = 40px */
+  font-size: 4rem;
+}
+
+@media (min-width: 800px) {
+  h1,
+.h1 { /* = 50px */
+    font-size: 5rem;
+  }
+}
+h2,
+.h2 { /* = 35px */
+  font-size: 3.5rem;
+}
+
+@media (min-width: 800px) {
+  h2,
+.h2 { /* = 40px */
+    font-size: 4rem;
+  }
+}
+h3,
+.h3 { /* = 30px */
+  font-size: 3rem;
+}
+
+@media (min-width: 800px) {
+  h3,
+.h3 { /* = 35px */
+    font-size: 3.5rem;
+  }
+}
+h4,
+.h4 { /* = 16px */
+  font-size: 1.6rem;
+}
+
+@media (min-width: 600px) {
+  h4,
+.h4 { /* = 18px */
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 800px) {
+  h4,
+.h4 { /* = 22px */
+    font-size: 2.2rem;
+  }
+}
+/* Utilitaires
+   ========================================================================== */
+/*** Clearfix ***/
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*** Harmoniser le modèle de boîte avec Box-Sizing ***/
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Images fluides */
+img {
+  max-width: 100%;
+}
+
+/*** Styles de base ***/
+abbr[title] {
+  text-decoration: none;
+  cursor: help;
+}
+
+abbr[title]:hover {
+  background-color: rgba(244, 161, 71, 0.25);
+}
+
+/** Accessibilité
+  * Pour cacher visuellement tout en gardant accessible un contenu:
+  * screen-reader-only ou visuallyhidden **/
+.screen-reader-only,
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.screen-reader-only.focusable:active,
+.screen-reader-only.focusable:focus,
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* Importation des polices
+   ========================================================================== */
+/* Styles du BODY / Généraux
+   ========================================================================== */
+body {
+  font-family: Helvetica;
+  color: #FFFFFF;
+  background-color: #242526;
+  background-image: url("../images/fond/neons-mobile.png");
+  background-size: 100%;
+}
+@media (min-width: 800px) {
+  body body {
+    background-image: url("../images/fond/neons-table.png");
   }
 }
 body a {
-  color: white;
+  color: #FFFFFF;
   text-decoration: none;
 }
-body img {
-  width: auto !important;
-}
 body h2 {
-  font-size: 40px;
-  font-family: "Alata", sans-serif;
   text-transform: uppercase;
-}
-body div.artistesSugDiv {
-  background-color: #242526;
-  filter: drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5));
-}
-body div.artistesSugDiv h2.suggestions {
-  margin-top: 50px;
-}
-body div.artistesSugDiv section.artistesSug {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
-}
-body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 0px;
-  margin-bottom: 100px;
-}
-@media (min-width: 1000px) {
-  body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
-    margin-left: 100px;
-    margin-right: 100px;
-  }
-  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug {
-    color: white;
-  }
-  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:link,
-body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:visited {
-    color: white;
-  }
-  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:hover,
-body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:active {
-    color: white;
-    text-decoration: underline;
-  }
-}
-body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 25px;
-  text-align: center;
-}
-body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug p.nomArtisteSug {
-  z-index: 1;
-  position: relative;
-  top: 340px;
-}
-body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug img.imgHeroArtisteSug {
-  z-index: 0;
 }
 body main.contenuArtiste {
   display: block;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 body main.contenuArtiste .media .partieGauche {
   grid-area: partieGauche;
@@ -99,6 +223,8 @@ body main.contenuArtiste .media .partieDroite {
 }
 @media (min-width: 1000px) {
   body main.contenuArtiste {
+    margin-left: 20px;
+    margin-right: 20px;
     display: grid;
     grid-template-areas: "partieGauche partieDroite";
     grid-template-columns: 50% 50%;
@@ -166,14 +292,12 @@ body main.contenuArtiste div.fondNeons.mauve:after {
   border: 3px solid #AC3AB6;
   box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
 }
-body main.contenuArtiste div.partieGauche {
+body main.contenuArtiste div.partieDroite {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-body main.contenuArtiste div.partieGauche h1 {
-  font-size: 50px;
-  font-family: "Rubik Dirt", sans-serif;
+body main.contenuArtiste div.partieDroite h1 {
   font-weight: 400;
   text-transform: uppercase;
   position: relative;
@@ -181,29 +305,90 @@ body main.contenuArtiste div.partieGauche h1 {
   background-color: #242526;
   padding: 10px 20px;
 }
-body main.contenuArtiste div.partieGauche h3 {
-  font-size: 32px;
-  font-family: "Alata", sans-serif;
+body main.contenuArtiste div.partieDroite h3 {
   text-transform: uppercase;
 }
-body main.contenuArtiste div.partieGauche div.neonsDescription:before {
+body main.contenuArtiste div.partieDroite div.neonsDescription:before {
   left: -10px !important;
   right: 45px !important;
   top: -5px !important;
   bottom: 20px !important;
 }
-body main.contenuArtiste div.partieDroite {
+body main.contenuArtiste div.partieGauche {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-body main.contenuArtiste div.partieDroite div.imagesArtiste {
+body main.contenuArtiste div.partieGauche div.imagesArtiste {
   display: flex;
   z-index: 1;
 }
-body main.contenuArtiste div.partieDroite .imageHeroArtiste {
+body main.contenuArtiste div.partieGauche div.imagesArtiste div.imageArtisteGauche {
+  margin-right: 10px;
+}
+body main.contenuArtiste div.partieGauche div.imagesArtiste div.imageArtisteDroite {
+  margin-left: 10px;
+}
+body main.contenuArtiste div.partieGauche picture.imageHeroArtiste {
   z-index: 1;
   position: relative;
+}
+body main.contenuArtiste div.partieGauche img.imgHeroArtiste {
+  z-index: 1;
+  position: relative;
+}
+body div.artistesSugDiv {
+  background-color: #242526;
+  filter: drop-shadow(4px 4px 15px #AC3AB6) drop-shadow(-4px -4px 15px #AC3AB6);
+}
+body div.artistesSugDiv h2.suggestions {
+  margin-top: 50px;
+}
+body div.artistesSugDiv section.artistesSug {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 100px;
+}
+@media (min-width: 1000px) {
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug {
+    color: #FFFFFF;
+  }
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:link,
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:visited {
+    color: #FFFFFF;
+  }
+  body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:hover,
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions a.lienArtisteSug:active {
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 25px;
+  text-align: center;
+}
+body div.artistesSugDiv section.artistesSug ul.listeSuggestions li.artisteSug p.nomArtisteSug {
+  z-index: 1;
+  position: relative;
+  top: 340px;
 }
 
 /*# sourceMappingURL=style-rosalie.css.map */
