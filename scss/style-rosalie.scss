@@ -4,82 +4,249 @@
  * @author Rosalie Roy - 2133488@csfoy.ca
  *
  * TABLE DES MATIERES
- ** Importation de polices
- **
+ ** Importation de la charte typographique
+ ** Importation des utilitaires (variables)
+ ** Styles du body / généraux
+ *** Main
+ **** Partie droite
+ **** Partie gauche
+ *** Artistes suggérés
  */
 
-// Importation de polices
+/* Charte typographique
+   ========================================================================== */
+@import "base/_typo";
+
+/* Utilitaires
+   ========================================================================== */
+@import "utilitaire/_variables";
+
+
+/* Importation des polices
+   ========================================================================== */
 // RUBIK DIRT (H1)
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 // ALATA (H2 - H3)
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
+/* Styles du BODY / Généraux
+   ========================================================================== */
 body {
   font-family: Helvetica;
-  font-size: 16px;
-  background-color: #242526;
-  color: white;
-
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  h2 {
-    font-size: 40px;
-    font-family: 'Alata', sans-serif;
-    text-transform: uppercase;
-  }
-
-  div.artistesSugDiv {
-    background-color: #242526;
-    filter: drop-shadow(4px 4px 15px rgba(172, 58, 182, 0.5)) drop-shadow(-4px -4px 15px rgba(172, 58, 182, 0.5));
-
-    section.artistesSug {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      ul.listeSuggestions {
-        list-style-type: none;
-      }
+  color: $blanc;
+  background-color: $charcoal;
+  background-image: url("../images/fond/neons-mobile.png");
+  background-size: 100%;
+  @media (min-width:800px) {
+    body {
+      background-image: url("../images/fond/neons-table.png");
     }
   }
 
-  main {
-    display: flex;
+  a {
+    color: $blanc;
+    text-decoration: none;
+  }
 
-    //background-image: url("../../img/ligneBleue.svg");
-    div.partieGauche {
-      width: 50%;
+  h2 {
+    text-transform: uppercase;
+  }
+
+  // Main
+  main.contenuArtiste {
+    display: block;
+    .media .partieGauche {grid-area: partieGauche; }
+    .media .partieDroite {grid-area: partieDroite; }
+    margin-left: 100px;
+    margin-right: 100px;
+
+    @media (min-width: 1000px){
+      margin-left: 20px;
+      margin-right: 20px;
+      display: grid;
+      grid-template-areas:
+      "partieGauche partieDroite";
+      grid-template-columns: 50% 50%;
+      grid-column-gap: 20px;
+    }
+
+    div.fondFonce{
+      background-color: #242526;
+      padding: 10px 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    div.fondNeons {
+      padding: 15px;
+      display: inline-block;
+      position: relative;
+      z-index: 0;
+      margin-left: 30px;
+      @media(min-width: 1000px){
+        margin-right: 100px;
+      }
+
+      .imageHeroArtiste {
+        margin-left: 100px;
+        z-index: 1;
+        position: relative;
+        @media(min-width: 1000px){
+          margin-left: 100px;
+        }
+      }
+    }
+
+    div.fondNeons:before{
+      content:"";
+      position: absolute;
+      z-index: 0;
+      left: -10px;
+      right: 45px;
+      top: 35px;
+      bottom:20px;
+      border: 3px solid $jaune;
+      box-shadow: 4px 4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4), -4px -4px 15px rgba($jaune, 0.4) inset, 4px 4px 15px rgba($jaune, 0.4) inset;
+    }
+
+    div.fondNeons#bleu:after{
+      content:"";
+      position: absolute;
+      z-index: 0;
+      left: 50px;
+      right: -10px;
+      top: 70px;
+      bottom: 0px;
+      border: 3px solid $bleu;
+      box-shadow: 4px 4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4), -4px -4px 15px rgba($bleu, 0.4) inset, 4px 4px 15px rgba($bleu, 0.4) inset;
+    }
+
+    div.fondNeons.mauve:after{
+      content:"";
+      position: absolute;
+      z-index: 0;
+      left: 50px;
+      right: -10px;
+      top: 70px;
+      bottom: 0px;
+      border: 3px solid $mauve;
+      box-shadow: 4px 4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4), -4px -4px 15px rgba($mauve, 0.4) inset, 4px 4px 15px rgba($mauve, 0.4) inset;
+    }
+    // * Partie droite *
+    div.partieDroite {
       display: flex;
       flex-direction: column;
       align-items: center;
 
       h1 {
-        font-size: 50px;
-        font-family: 'Rubik Dirt', sans-serif;
         font-weight: 400;
         text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+        background-color: $charcoal;
+        padding: 10px 20px;
       }
 
-      div.fondFonce {
-        background-color: #242526;
         h3 {
-          font-size: 32px;
-          font-family: 'Alata', sans-serif;
           text-transform: uppercase;
         }
+
+      div.neonsDescription:before{
+        left: -10px !important;
+        right: 45px !important;
+        top: -5px !important;
+        bottom:20px !important;
       }
     }
 
-    div.partieDroite {
-      width: 50%;
+    // * Partie gauche *
+    div.partieGauche {
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      div.imagesArtiste{
+      div.imagesArtiste {
         display: flex;
+        z-index: 1;
+
+        div.imageArtisteGauche {
+          margin-right: 10px;
+        }
+
+        div.imageArtisteDroite {
+          margin-left: 10px;
+        }
+      }
+
+      picture.imageHeroArtiste{
+        z-index: 1;
+        position: relative;
+      }
+      img.imgHeroArtiste {
+        z-index: 1;
+        position: relative;
+      }
+    }
+  }
+  // Artistes suggérés
+  div.artistesSugDiv {
+    background-color: $charcoal;
+    filter: drop-shadow(4px 4px 15px $mauve) drop-shadow(-4px -4px 15px $mauve);
+
+    h2.suggestions {
+      margin-top: 50px;
+    }
+
+    section.artistesSug {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+
+      ul.listeSuggestions {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 0px;
+        margin-bottom: 100px;
+
+
+        @media(min-width:1000px) {
+          margin-left: 100px;
+          margin-right: 100px;
+
+          a.lienArtisteSug {
+            color: $blanc;
+          }
+
+          a.lienArtisteSug:link,
+          a.lienArtisteSug:visited {
+            color: $blanc;
+          }
+
+          a.lienArtisteSug:hover,
+          a.lienArtisteSug:active {
+            color: $blanc;
+            text-decoration: underline;
+          }
+        }
+
+        li.artisteSug {
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-top: 25px;
+          text-align: center;
+
+          p.nomArtisteSug {
+            z-index: 1;
+            position: relative;
+            top: 340px;
+          }
+        }
       }
     }
   }

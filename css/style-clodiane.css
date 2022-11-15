@@ -4,450 +4,14 @@
 * Menu
 * Grille
 * Mise en page
-  ** Temporaire
-  ** Général
-    *** H1
-    *** H2
-  ** Tri et filtres
-    *** Boutons
-  ** Contrôles de page
-    *** Style inactif/actif
-    *** Style link/visited/hover/active
-    *** Déco
-  ** Liens artistes
-    *** Styles lien
-    *** Contour info artiste
-    *** Contour img artiste
-  ** Liens artistes vedettes
-    *** Styles lien
-    *** Contour img artiste vedette
-    *** Contour info artiste
+** Temporaire
+** Général
+** Tri et filtres
+** Contrôles de page
+** Liens artistes
 */
 /* Normalize
    ========================================================================== */
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-/* Document
-   ========================================================================== */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in iOS.
- */
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
-html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-}
-
-/* Sections
-   ========================================================================== */
-/**
- * Remove the margin in all browsers.
- */
-body {
-  margin: 0;
-}
-
-/**
- * Render the `main` element consistently in IE.
- */
-main {
-  display: block;
-}
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-/* Grouping content
-   ========================================================================== */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-  background-color: transparent;
-}
-
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/* Embedded content
-   ========================================================================== */
-/**
- * Remove the border on images inside links in IE 10.
- */
-img {
-  border-style: none;
-}
-
-/* Forms
-   ========================================================================== */
-/**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
-}
-
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-button,
-input { /* 1 */
-  overflow: visible;
-}
-
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-button,
-select { /* 1 */
-  text-transform: none;
-}
-
-/**
- * Correct the inability to style clickable types in iOS and Safari.
- */
-button,
-[type=button],
-[type=reset],
-[type=submit] {
-  -webkit-appearance: button;
-}
-
-/**
- * Remove the inner border and padding in Firefox.
- */
-button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-/**
- * Restore the focus styles unset by the previous rule.
- */
-button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-/**
- * Correct the padding in Firefox.
- */
-fieldset {
-  padding: 0.35em 0.75em 0.625em;
-}
-
-/**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
-legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * Remove the default vertical scrollbar in IE 10+.
- */
-textarea {
-  overflow: auto;
-}
-
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-[type=checkbox],
-[type=radio] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-[type=search] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-[type=search]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/* Interactive
-   ========================================================================== */
-/*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
-details {
-  display: block;
-}
-
-/*
- * Add the correct display in all browsers.
- */
-summary {
-  display: list-item;
-}
-
-/* Misc
-   ========================================================================== */
-/**
- * Add the correct display in IE 10+.
- */
-template {
-  display: none;
-}
-
-/**
- * Add the correct display in IE 10.
- */
-[hidden] {
-  display: none;
-}
-
-/* Charte typographique
-   ========================================================================== */
-/**
- * Typographie responsive (Mobile First)
-   ========================================================================
- *
- * @author Clodiane Charette 2164515@csfoy.ca
- *
- * TABLE DES MATIÈRES
- * Polices
- * Base décimale
- * Hiérarchie responsive
- *
- *
- * Doc des points de rupture :
- * ==========================================================================
- * Écran étroit : de 0 à 800px
- * point de rupture: 800px
- *
- * Écran large : 801px et +
- */
-h1,
-.h1 {
-  font-family: "RubikDirt", sans-serif;
-}
-
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4 {
-  font-family: "Alata", sans-serif;
-}
-
-body {
-  font-family: "Arial", sans-serif;
-}
-
-/* Base décimale */
-html {
-  font-size: 62.5%;
-}
-
-body {
-  /* 16px pour toutes les largeurs d'écran */
-  font-size: 1.6rem;
-  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
-  line-height: 1.375;
-}
-
-@media (min-width: 600px) {
-  body {
-    line-height: 1.5;
-  }
-}
-@media (min-width: 800px) {
-  body {
-    line-height: 1.75;
-  }
-}
-/* Hiérarchie responsive : plus proche = plus petit  &  plus loin = plus grand */
-h1,
-.h1 { /* = 40px */
-  font-size: 4rem;
-}
-
-@media (min-width: 800px) {
-  h1,
-.h1 { /* = 50px */
-    font-size: 5rem;
-  }
-}
-h2,
-.h2 { /* = 35px */
-  font-size: 3.5rem;
-}
-
-@media (min-width: 800px) {
-  h2,
-.h2 { /* = 40px */
-    font-size: 4rem;
-  }
-}
-h3,
-.h3 { /* = 30px */
-  font-size: 3rem;
-}
-
-@media (min-width: 800px) {
-  h3,
-.h3 { /* = 35px */
-    font-size: 3.5rem;
-  }
-}
-h4,
-.h4 { /* = 16px */
-  font-size: 1.6rem;
-}
-
-@media (min-width: 600px) {
-  h4,
-.h4 { /* = 18px */
-    font-size: 1.8rem;
-  }
-}
-@media (min-width: 800px) {
-  h4,
-.h4 { /* = 22px */
-    font-size: 2.2rem;
-  }
-}
 /* Utilitaires
    ========================================================================== */
 /*** Clearfix ***/
@@ -459,10 +23,12 @@ h4,
 
 /*** Harmoniser le modèle de boîte avec Box-Sizing ***/
 html {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 *, *::before, *::after {
+  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -508,6 +74,154 @@ abbr[title]:hover {
   width: auto;
 }
 
+/* Charte typographique
+   ========================================================================== */
+/**
+ * Typographie responsive (Mobile First)
+   ========================================================================
+ * Les valeurs de taille de police suggérées ici sont à titre indicatif.
+ * À ajuster selon la direction visuelle et le choix de polices de caractères.
+ *
+ * @author Prénom Nom courriel
+ *
+ * TABLE DES MATIÈRES
+ * Polices
+ * Base décimale
+ * Hiérarchie responsive
+ *
+ *
+ * Doc des points de rupture :
+ * ==========================================================================
+ * Écran étroit : de 0 à 599px
+ * point de rupture: 600px
+ *
+ * Écran moyen : de 600 à 799px
+ * point de rupture: 800px
+ *
+ * Écran large : 800px et +
+ */
+/* Polices */
+/* Selon le projet, il est souvent préférable d'utiliser le lien @import des Google Fonts
+ * plutôt que de servir directement les polices de caractères à l'aide d'instructions @font-face
+ * et d'un dossier de polices dans la structure de répertoires.
+ * La méthode ci-dessous vise à offrir dans l'ordre de priorité les 3 formats possibles pour
+ * assurer la meilleure compatibilité.
+ */
+@font-face {
+  font-family: RubikDirt;
+  src: url(../../font/RubikDirt-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: Alata;
+  src: url(../../font/alata-regular.ttf) format("truetype");
+}
+h1,
+.h1 {
+  font-family: RubikDirt, sans-serif;
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-family: Alata, sans-serif;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Base décimale */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* 16px pour toutes les largeurs d'écran */
+  font-size: 1.6rem;
+  /* facteur multiplicateur de la taille de la police 1.375x16 = 22 */
+  line-height: 1.375;
+}
+
+@media (min-width: 600px) {
+  body {
+    line-height: 1.5;
+  }
+}
+@media (min-width: 800px) {
+  body {
+    line-height: 1.75;
+  }
+}
+/* Hiérarchie responsive : plus proche = plus petit  &  plus loin = plus grand */
+h1,
+.h1 {
+  /* = 40px */
+  font-size: 4rem;
+}
+
+@media (min-width: 800px) {
+  h1,
+.h1 {
+    /* = 50px */
+    font-size: 5rem;
+  }
+}
+h2,
+.h2 {
+  /* = 30px */
+  font-size: 3rem;
+}
+
+@media (min-width: 800px) {
+  h2,
+.h2 {
+    /* = 35px */
+    font-size: 3.5rem;
+  }
+}
+h3,
+.h3 {
+  /* = 18px */
+  font-size: 1.8rem;
+}
+
+@media (min-width: 600px) {
+  h3,
+.h3 {
+    /* = 24px */
+    font-size: 2.4rem;
+  }
+}
+@media (min-width: 800px) {
+  h3,
+.h3 {
+    /* = 30px */
+    font-size: 3rem;
+  }
+}
+h4,
+.h4 {
+  /* = 16px */
+  font-size: 1.6rem;
+}
+
+@media (min-width: 600px) {
+  h4,
+.h4 {
+    /* = 18px */
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 800px) {
+  h4,
+.h4 {
+    /* = 22px */
+    font-size: 2.2rem;
+  }
+}
 /* Mise en page
    ========================================================================== */
 /** Temporaire
@@ -520,76 +234,11 @@ abbr[title]:hover {
     ========================================================================== */
 body {
   background-color: #242526;
-  background-image: url("../images/fond/neons-mobile.png");
-  background-size: 100%;
-}
-
-@media (min-width: 800px) {
-  body {
-    background-image: url("../images/fond/neons-table.png");
-  }
-}
-/*** H1
-  ========================================================================== */
-.titre {
-  text-align: center;
-}
-
-h1 {
-  background-color: #242526;
-  display: inline-block;
-  padding: 10px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.h1_deco {
-  padding: 15px;
-  display: inline-block;
-  position: relative;
-}
-
-.h1_deco:before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: -5px;
-  right: 25px;
-  top: 30px;
-  bottom: 60px;
-  border: 3px solid #FFE607;
-  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
-}
-
-.h1_deco:after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: 25px;
-  right: -10px;
-  top: 60px;
-  bottom: 30px;
-  border: 3px solid #46D3D3;
-  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
-}
-
-/*** H2
-========================================================================== */
-h2.titrePage,
-h2.titreVedette {
-  color: #FFFFFF;
-  background-color: #242526;
-  display: inline-block;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  border: 3px solid #AC3AB6;
-  border-radius: 4px;
-  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
 }
 
 h1,
-.desole,
+.artiste_info_nom,
+.artiste_info_style,
 .indicateur-page {
   color: #FFFFFF;
 }
@@ -597,81 +246,52 @@ h1,
 /** Tri et filtres
     ========================================================================== */
 .media > .section-tri {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: tri;
 }
 
 .media > .section-filtre {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
   grid-area: filtre;
 }
 
 .media > .appliquer {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: app;
 }
 
 .media > .reinitialiser {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: reini;
 }
 
 .h2_tri {
   color: #242526;
-  margin-top: 0;
 }
 
 .tri-filtres {
   background-color: #46D3D3;
-  background-size: 200%;
+  -webkit-box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4);
   box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4);
-  padding: 3% 10%;
+  display: -ms-grid;
   display: grid;
   grid-column-gap: 20px;
+  -ms-grid-columns: 30% 60%;
   grid-template-columns: 30% 60%;
   grid-template-areas: "tri filtre" "app reini";
 }
 
-.filtre_element {
-  list-style: none;
-  display: inline-block;
-  width: 12rem;
-}
-
-.checkbox-style {
-  accent-color: #242526;
-}
-
-/*** Boutons
-    ========================================================================== */
 .bouton {
   max-width: 100px;
-  margin: 30px 5px 5px 5px;
-  padding: 0px;
-  background-color: #242526;
-  border: none;
-  color: #FFFFFF;
-  border-radius: 4px;
-}
-
-.bouton:hover {
-  color: #46D3D3;
-}
-
-.bouton:active {
-  box-shadow: inset 0px -3px 5px 6px rgba(0, 0, 0, 0.5);
-  width: 105%;
-}
-
-.bouton:hover p,
-.bouton:active p {
-  text-shadow: -4px -4px 15px #46D3D3, 4px 4px 15px #46D3D3;
+  margin: 10px 5px;
 }
 
 /** Contrôles de page
     ========================================================================== */
-.controles_div_total {
-  text-align: center;
-}
-
-/*** Style inactif/actif
-  ========================================================================== */
 .page.inactif {
   color: #AC3AB6;
   text-shadow: -4px -4px 15px #AC3AB6, 4px 4px 15px #AC3AB6;
@@ -682,21 +302,6 @@ h1,
   color: #A4A4A4;
 }
 
-.indicateur-page {
-  text-align: center;
-  margin: 5px;
-}
-
-.controle-page {
-  display: inline-block;
-  background-color: #242526;
-  padding: 10px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-/*** Style link/visited/hover/active
-  ========================================================================== */
 .actif:link,
 .actif:visited {
   color: #FFFFFF;
@@ -708,305 +313,86 @@ h1,
   text-shadow: -4px -4px 15px rgba(255, 230, 7, 0.5), 4px 4px 15px rgba(255, 230, 7, 0.5);
 }
 
-/*** Déco
-  ========================================================================== */
-.controles_deco {
-  padding: 15px;
-  display: inline-block;
-  position: relative;
-}
-
-.controles_deco:before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: -5px;
-  right: 50px;
-  top: 0px;
-  bottom: 35px;
-  border: 3px solid #FFE607;
-  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
-}
-
-.controles_deco:after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: 25px;
-  right: -10px;
-  top: 35px;
-  bottom: 0px;
-  border: 3px solid #46D3D3;
-  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
-}
-
 /** Liens artistes
     ========================================================================== */
 .liste-artistes {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  max-width: 75%;
-  margin: 100px auto -50px auto;
 }
 
-h3.longTitre {
-  font-size: 170%;
+.artiste_img {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
 }
 
 .artistes {
   list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  margin-top: -30px;
 }
 
-.artiste_img {
-  order: 1;
-  position: relative;
-  z-index: 1;
-  width: 260px;
+.artiste_info_nom,
+.artiste_info_style {
+  background-color: #242526;
+  max-width: 245px;
+}
+
+.artiste_info {
+  margin-left: 20px;
 }
 
 @media (min-width: 800px) {
   .liste-artistes {
-    margin: 50px auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
-  .artistes {
+  .artistes.impair {
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
-    align-items: center;
-    margin-top: 50px;
-  }
-  .artistes_lien.impair {
     margin-right: auto;
   }
-  .artistes_lien.pair {
+  .artistes.pair {
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
     margin-left: auto;
   }
   .artiste_img {
+    -webkit-box-ordinal-group: 1;
+    -ms-flex-order: 0;
     order: 0;
   }
 }
-/*** Styles lien
-  ========================================================================== */
-.artistes_lien:link,
-.artistes_lien:visited {
-  text-decoration: none;
-}
-
-.artistes_lien:hover,
-.artistes_lien:active {
-  text-decoration: underline #FFFFFF;
-}
-
-/*** Contour img artiste
-  ========================================================================== */
-.artistes_deco {
-  padding: 15px;
-  display: inline-block;
-  position: relative;
-  width: 290px;
-}
-
-.artistes_deco:before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  right: 25px;
-  top: -5px;
-  bottom: 30px;
-  z-index: 0;
-}
-
-.pair .artistes_deco:before {
-  border: 3px solid #46D3D3;
-  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
-}
-
-.impair .artistes_deco:before {
-  border: 3px solid #AC3AB6;
-  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
-}
-
-@media (min-width: 800px) {
-  .artistes {
-    flex-direction: row;
-    align-items: center;
-    margin-top: 50px;
-  }
-  .artistes_lien.impair {
-    margin-right: auto;
-  }
-  .artistes_lien.pair {
-    margin-left: auto;
-  }
-  .artiste_img {
-    order: 0;
-  }
-}
-/*** Contour info artiste
-  ========================================================================== */
-.artiste_info_nom,
-.artiste_info_style {
-  max-width: 245px;
-  color: #FFFFFF;
-}
-
-.artiste_info {
-  background-color: #242526;
-  max-width: 260px;
-  margin-left: 30px;
-  padding: 180px 20px 10px 20px;
-  position: relative;
-  z-index: 0;
-  top: -230px;
-}
-
-.pair .artiste_info {
-  border: 3px solid #AC3AB6;
-  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
-}
-
-.impair .artiste_info {
-  border: 3px solid #FFE607;
-  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
-}
-
-@media (min-width: 800px) {
-  .artiste_info {
-    margin-left: 0;
-    min-width: 300px;
-    height: 240px;
-    padding: 10px 20px 5px 50px;
-    position: relative;
-    left: -30px;
-    top: 0;
-  }
-  .pair .artiste_info {
-    border: 3px solid #AC3AB6;
-    box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
-  }
-  .impair .artiste_info {
-    border: 3px solid #FFE607;
-    box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
-  }
-}
-/** Liens artistes vedettes
-    ========================================================================== */
-h3.tresLongTitre {
-  font-size: 120%;
-  line-height: 125%;
-}
-
-.liste_artistes-vedettes {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  max-width: 75%;
-  margin: 50px auto;
-}
-
-@media (min-width: 800px) {
-  .liste_artistes-vedettes {
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 35px auto 85px auto;
-    padding: 0;
-  }
-}
-/*** Styles lien
-  ========================================================================== */
-.artistes-vedettes_lien:link,
-.artistes-vedettes_lien:visited {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.artistes-vedettes_lien:hover,
-.artistes-vedettes_lien:active {
-  color: #FFFFFF;
-  text-decoration: underline #FFFFFF;
-}
-
-.artistes-vedettes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
-
-/*** Contour img artiste vedette
-  ========================================================================== */
-.artiste-vedettes_img {
-  position: relative;
-  z-index: 1;
-}
-
-.artiste-vedettes_img img {
-  max-width: 220px;
-}
-
-.artistes-vedettes_deco {
-  padding: 15px;
-  display: inline-block;
-  position: relative;
-  width: 290px;
-}
-
-.artistes-vedettes_deco:before {
-  content: "";
-  position: absolute;
-  left: 25px;
-  right: 25px;
-  top: -5px;
-  bottom: 30px;
-}
-
-.pair .artistes-vedettes_deco:before {
-  border: 3px solid #46D3D3;
-  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
-  z-index: 0;
-}
-
-.impair .artistes-vedettes_deco:before {
-  border: 3px solid #FFE607;
-  box-shadow: 4px 4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4), -4px -4px 15px rgba(255, 230, 7, 0.4) inset, 4px 4px 15px rgba(255, 230, 7, 0.4) inset;
-  z-index: 0;
-}
-
-/*** Contour info artiste vedette
-  ========================================================================== */
-.artiste-vedettes_info_nom {
-  height: 70px;
-  line-height: 40px;
-  margin: 15px 0;
-}
-
-.artiste-vedettes_info_style {
-  margin: 0;
-}
-
-.artiste-vedettes_info {
-  text-align: center;
-  background-color: #242526;
-  width: 200px;
-  color: #FFFFFF;
-  padding: 70px 20px 15px 10px;
-  position: relative;
-  left: -40px;
-  top: -100px;
-  z-index: 0;
-}
-
-.pair .artiste-vedettes_info {
-  border: 3px solid #AC3AB6;
-  box-shadow: 4px 4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4), -4px -4px 15px rgba(172, 58, 182, 0.4) inset, 4px 4px 15px rgba(172, 58, 182, 0.4) inset;
-}
-
-.impair .artiste-vedettes_info {
-  border: 3px solid #46D3D3;
-  box-shadow: 4px 4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4), -4px -4px 15px rgba(70, 211, 211, 0.4) inset, 4px 4px 15px rgba(70, 211, 211, 0.4) inset;
-}
+/*# sourceMappingURL=style-clodiane.css.map */
 
 /*# sourceMappingURL=style-clodiane.css.map */
